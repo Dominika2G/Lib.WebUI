@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Home\Content\" />
+    <Folder Include="Features\Home\Views\Home\" />
+  </ItemGroup>
+
 </Project>
