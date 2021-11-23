@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Home\Content\" />
-    <Folder Include="Features\Home\Views\Home\" />
   </ItemGroup>
 
 </Project>
