@@ -13,7 +13,7 @@ module.exports = {
         ...bundleConfig.bundles,
     },
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: '[name].[chunkhash].bundle.js',
         path: path.resolve(__dirname, './wwwroot/js/bundles')
     },
     module: {

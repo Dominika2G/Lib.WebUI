@@ -1,4 +1,5 @@
 using Lib.WebUI.Configuration;
+using Lib.WebUI.Webpack;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,8 @@ namespace Lib.WebUI
             services.Configure<AppSettingsOptions>(Configuration.GetSection("AppSettings"));
 
             services.AddControllers().AddNewtonsoftJson();
+
+            WebpackChunkNamer.Init();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.Views

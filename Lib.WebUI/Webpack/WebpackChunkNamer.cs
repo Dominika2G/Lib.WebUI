@@ -50,14 +50,17 @@ namespace Lib.WebUI.Webpack
         {
             WebpackChunkNamer.Check();
             var element = Tags.FirstOrDefault(x => x.Key == $"{filename}.js");
-            return element.Value ?? string.Empty;
+            var val = element.Value.Remove(0, 4);
+            return val ?? string.Empty;
         }
 
         public static string GetCssFile(string filename)
         {
             WebpackChunkNamer.Check();
             var element = Tags.FirstOrDefault(x => x.Key == $"{filename}.css");
-            return element.Value ?? string.Empty;
+            //element.Value.Remove(0, 3);
+            var val = element.Value.Remove(0, 4);
+            return val ?? string.Empty;
         }
 
         private static void Check()
@@ -69,7 +72,6 @@ namespace Lib.WebUI.Webpack
                     using (var md5 = MD5.Create())
                     {
                         newHash = md5.ComputeHash(fs);
-
                         if (!newHash.SequenceEqual(oldHash))
                         {
                             WebpackChunkNamer.Init();

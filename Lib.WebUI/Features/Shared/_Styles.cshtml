@@ -1,1 +1,6 @@
-﻿
+﻿@model string
+
+@if (string.IsNullOrEmpty(WebpackChunkNamer.GetCssFile(Model)))
+{
+    <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile(Model)" />
+}
