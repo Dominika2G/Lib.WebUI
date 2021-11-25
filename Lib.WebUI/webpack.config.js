@@ -6,6 +6,7 @@ module.exports = {
     /*entry: {
         'index': path.resolve(__dirname, 'src') + '/Home/index.js'
     },*/
+    mode: 'production',
     entry: {
         ...bundleConfig.bundles,
     },
