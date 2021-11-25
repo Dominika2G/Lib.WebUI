@@ -6,8 +6,11 @@
     <title>@ViewData["Title"] - Lib.WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/js/bundles/test.css" />
-    <link rel="stylesheet" href="~/js/bundles/home.css" />
+    @*    <link rel="stylesheet" href="~/js/bundles/test.css" />
+        <link rel="stylesheet" href="~/js/bundles/home.css" />*@
+    <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("test")" />
+    <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("home")" />
+    @RenderSection("BundleStyles", required: false)
 </head>
 <body>
     <header>
@@ -31,7 +34,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container hello">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -45,8 +48,11 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/bundles//test.js" asp-append-version="true"></script>
-    <script src="~/js/bundles//home.js" asp-append-version="true"></script>
+    <script charset="utf-8" type="text/javascript" src="~/js/bundles/@WebpackChunkNamer.GetJsFile("core")"></script>
+    @*<script src="~/js/bundles//test.js" asp-append-version="true"></script>
+        <script src="~/js/bundles//home.js" asp-append-version="true"></script>*@
+    @*    <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("autocore")" />*@
     @RenderSection("Scripts", required: false)
+    @RenderSection("BundleScripts", required: false)
 </body>
 </html>

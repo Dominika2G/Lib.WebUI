@@ -1,0 +1,14 @@
+﻿@model string
+
+@if (!string.IsNullOrEmpty(WebpackChunkNamer.GetJsFile(Model)))
+{
+    <script charset="utf-8" type="text/javascript" src="~/js/bundles/@WebpackChunkNamer.GetJsFile(Model)"></script>
+}
+else
+{
+    <script>
+        $(function () {
+            alert('@string.Format( Model)');
+        });
+    </script>
+}
