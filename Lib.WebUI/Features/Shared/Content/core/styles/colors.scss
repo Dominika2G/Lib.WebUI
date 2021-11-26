@@ -1,0 +1,47 @@
+﻿@import '../variables/colors.scss';
+
+$colors: (
+    "blue-gray-25": $blue-gray-25,
+    "blue-gray-50": $blue-gray-50,
+    "blue-gray-100": $blue-gray-100,
+    "blue-gray-200": $blue-gray-200,
+    "blue-gray-300": $blue-gray-300,
+    "blue-gray-400": $blue-gray-400,
+    "blue-gray-500": $blue-gray-500,
+    "blue-gray-600": $blue-gray-600,
+    "blue-gray-700": $blue-gray-700,
+    "blue-gray-800": $blue-gray-800,
+    "blue-gray-900": $blue-gray-900,
+    "gray-50": $gray-50,
+    "gray-100": $gray-100,
+    "gray-200": $gray-200,
+    "gray-300": $gray-300,
+    "gray-400": $gray-400,
+    "gray-500": $gray-500,
+    "gray-600": $gray-600,
+    "gray-700": $gray-700,
+    "gray-800": $gray-800,
+    "gray-900": $gray-900,
+    "green-primary": $green-primary,
+    "red-primary": $red-primary,
+    "red-secondary": $red-secondary
+    );
+
+
+@each $name, $value in $colors {
+    .lib-bg-color-#{$name} {
+        background-color: $value;
+    }
+
+    .lib-bg-#{$name} {
+        background: $value;
+    }
+
+    .lib-text-#{$name} {
+        color: $value;
+    }
+
+    .lib-border-color-#{$name} {
+        border-color: $value !important;
+    }
+}
