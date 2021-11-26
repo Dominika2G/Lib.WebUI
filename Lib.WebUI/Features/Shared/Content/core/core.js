@@ -27,7 +27,7 @@ window.extensionCore = (() => {
     return {
         init,
         removePartialScript,
-        contentFullSpace,
+        //contentFullSpace,
         getHash
     };
 })();

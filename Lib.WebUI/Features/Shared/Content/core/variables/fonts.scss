@@ -1,2 +1,232 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+@mixin lib-font-montserrat {
+    font-family: 'Montserrat', sans-serif;
 }
+
+/* Region regular */
+
+@mixin lib-content-regular-xxs {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height:24px;
+}
+
+@mixin lib-content-regular-xs {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 24px;
+}
+
+@mixin lib-content-regular-s {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin lib-content-regular-m {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin lib-content-regular-l {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin lib-content-regular-xl {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Endregion regular */
+/* Region medium */
+
+@mixin lib-content-medium-xxs {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+@mixin lib-content-medium-xs {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 24px;
+}
+
+@mixin lib-content-medium-s {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin lib-content-regular-m {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin lib-content-medium-l {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin lib-content-medium-xl {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Endregion medium */
+/* Region semibold */
+
+@mixin lib-content-semibold-xxs {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+@mixin lib-content-semibold-xs {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 24px;
+}
+
+@mixin lib-content-semibold-s {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin lib-content-semibold-m {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin lib-content-semibold-l {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin lib-content-semibold-xl {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Endregion semibold */
+/* Region bold */
+
+@mixin lib-content-bold-xxs {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+@mixin lib-content-bold-xs {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 24px;
+}
+
+@mixin lib-content-bold-s {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin lib-content-bold-m {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin lib-content-bold-l {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin lib-content-bold-xl {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Endregion bold */
+/* Endregion extrabold */
+
+@mixin lib-content-extrabold-xxs {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+@mixin lib-content-extrabold-xs {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 24px;
+}
+
+@mixin lib-content-extrabold-s {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin lib-content-extrabold-m {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin lib-content-extrabold-l {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin lib-content-extrabold-xl {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* Endregion ectrabold */

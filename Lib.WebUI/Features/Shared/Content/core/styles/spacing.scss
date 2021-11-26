@@ -1,2 +1,111 @@
-﻿body {
+﻿@import '../variables/spacing.scss';
+
+$spacing: (
+    "1": $spacer-01,
+    "2": $spacer-02,
+    "3": $spacer-03,
+    "4": $spacer-04,
+    "5": $spacer-05,
+    "6": $spacer-06,
+    "7": $spacer-07,
+    "8": $spacer-08,
+    "9": $spacer-09,
+    "10": $spacer-10,
+    "11": $spacer-11,
+    "12": $spacer-12,
+    "13": $spacer-13,
+    "14": $spacer-14,
+    "15": $spacer-15,
+    "16": $spacer-16,
+    "17": $spacer-17,
+    "18": $spacer-18,
+    "19": $spacer-19,
+    "20": $spacer-20,
+    "21": $spacer-21,
+    "22": $spacer-22,
+    "23": $spacer-23,
+    "24": $spacer-24,
+    "25": $spacer-25,
+    "26": $spacer-26,
+    "27": $spacer-27,
+    "28": $spacer-28,
+    "29": $spacer-29,
+    "30": $spacer-30,
+    "31": $spacer-31,
+    "32": $spacer-32,
+    "33": $spacer-33,
+    "34": $spacer-34,
+    "35": $spacer-35,
+    "36": $spacer-36,
+    "37": $spacer-37,
+    "38": $spacer-38,
+    "39": $spacer-39,
+    "40": $spacer-40,
+    "41": $spacer-41,
+    "42": $spacer-42,
+    "43": $spacer-43,
+    "44": $spacer-44,
+    "45": $spacer-45
+);
+
+@each $name, $value in $spacing {
+    .lib-m-#{$name} {
+        margin: $value;
+    }
+
+    .lib-mt-#{$name} {
+        margin-top: $value;
+    }
+
+    .lib-mb-#{$name} {
+        margin-bottom: $value;
+    }
+
+    .lib-ml-#{$name} {
+        margin-left: $value;
+    }
+
+    .lib-mr-#{$name} {
+        margin-right: $value;
+    }
+
+    .lib-my-#{$name} {
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+
+    .lib-mx-#{$name} {
+        margin-left: $value;
+        margin-right: $value;
+    }
+
+    .lib-p-#{$name} {
+        padding: $value;
+    }
+
+    .lib-pt-#{$name} {
+        padding-top: $value;
+    }
+
+    .lib-pb-#{$name} {
+        padding-bottom: $value;
+    }
+
+    .lib-pl-#{$name} {
+        padding-left: $value;
+    }
+
+    .lib-pr-#{$name} {
+        padding-right: $value;
+    }
+
+    .lib-py-#{$name} {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+
+    .lib-px-#{$name} {
+        padding-left: $value;
+        padding-right: $value;
+    }
 }
