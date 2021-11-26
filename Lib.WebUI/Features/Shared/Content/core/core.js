@@ -1,4 +1,6 @@
-﻿window.extensionCore = (() => {
+﻿import './core.scss';
+
+window.extensionCore = (() => {
     const init = () => {
         removeConstScript();
         removePartialScript();
@@ -25,7 +27,7 @@
     return {
         init,
         removePartialScript,
-        contentFullSpace,
+        //contentFullSpace,
         getHash
     };
 })();
