@@ -12,7 +12,7 @@ window.extensionCore = (() => {
     };
 
     const removePartialScript = () => {
-        $(".emuze-partial-script-elements").remove();
+        $(".lib-partial-script-elements").remove();
     };
 
 
@@ -27,7 +27,6 @@ window.extensionCore = (() => {
     return {
         init,
         removePartialScript,
-        //contentFullSpace,
         getHash
     };
 })();
