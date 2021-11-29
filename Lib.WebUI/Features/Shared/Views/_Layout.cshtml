@@ -6,8 +6,6 @@
     <title>@ViewData["Title"] - Lib.WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*    <link rel="stylesheet" href="~/js/bundles/test.css" />
-        <link rel="stylesheet" href="~/js/bundles/home.css" />*@
     <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("test")" />
     <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("home")" />
     <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("core")" />
@@ -15,37 +13,47 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Lib.WebUI</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dar home" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div class="lib-main-sidenav lib-bg-gray-50">
+            <nav id="MainNavBar" class="navbar navbar-expand-sm lib-pt-2">
+                <div class="navbar-brand lib-pl-5 lib-pt-2">
+                   @* Library*@
                 </div>
-            </div>
-        </nav>
+                <div class="collapse navbar-collapse" id="NavbarItems">
+                    <div class="d-inline-block lib-menu">
+                        <div class="lib-menu-item lib-pr-6">
+                            <button class="btn btn-primary lib-content-bold-s lib-text-gray-50 lib-w-16" href="#">dominika.goralczyk@gmail.com"</button>
+                        </div>
+                        <div class="lib-menu-item lib-pr-6">
+                            <button class="btn lib-button-header lib-content-bold-s lib-text-gray-50 lib-w-14" href="#"></button>
+                        </div>
+                        <div class="lib-menu-item lib-pr-6">
+                            <button class="btn lib-button-header lib-content-bold-s lib-text-gray-50 lib-w-30" href="#"></button>
+                        </div>
+                        <div class="lib-menu-item lib-pr-6">
+                            <button class="btn lib-button-header-light lib-content-bold-s lib-text-gray-50 lib-w-33" href="#"></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </header>
-    <div class="container hello">
-        <main role="main" class="pb-3">
+    <div class="sidebar">
+        <div class="lib-mt-10 lib-active">
+            <a class="lib-content-medium-xl lib-text-blue-gray-600 lib-m-6 ">Książki</a>
+        </div>
+        <div class="">
+            <a class="lib-content-medium-xl lib-text-blue-gray-50 lib-m-6">Użytkownicy</a>
+        </div>
+        <div class="">
+            <a class="lib-content-medium-xl lib-text-blue-gray-50 lib-m-6">Statystyki</a>
+        </div>
+    </div>
+    <div class="lib-content-container">
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Lib.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

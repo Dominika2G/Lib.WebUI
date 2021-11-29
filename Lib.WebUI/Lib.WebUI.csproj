@@ -8,8 +8,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Shared\Content\core\theme\" />
-  </ItemGroup>
-
 </Project>
