@@ -2340,12 +2340,285 @@
 .lib-br-name {
   border-radius: 16px; }
 
+/* Region spacing */
+/* Endregion spacing */
+.lib-w-1 {
+  width: 4px; }
+
+.lib-h-1 {
+  height: 4px; }
+
+.lib-w-2 {
+  width: 8px; }
+
+.lib-h-2 {
+  height: 8px; }
+
+.lib-w-3 {
+  width: 12px; }
+
+.lib-h-3 {
+  height: 12px; }
+
+.lib-w-4 {
+  width: 16px; }
+
+.lib-h-4 {
+  height: 16px; }
+
+.lib-w-5 {
+  width: 20px; }
+
+.lib-h-5 {
+  height: 20px; }
+
+.lib-w-6 {
+  width: 24px; }
+
+.lib-h-6 {
+  height: 24px; }
+
+.lib-w-7 {
+  width: 28px; }
+
+.lib-h-7 {
+  height: 28px; }
+
+.lib-w-8 {
+  width: 32px; }
+
+.lib-h-8 {
+  height: 32px; }
+
+.lib-w-9 {
+  width: 36px; }
+
+.lib-h-9 {
+  height: 36px; }
+
+.lib-w-10 {
+  width: 40px; }
+
+.lib-h-10 {
+  height: 40px; }
+
+.lib-w-11 {
+  width: 44px; }
+
+.lib-h-11 {
+  height: 44px; }
+
+.lib-w-12 {
+  width: 48px; }
+
+.lib-h-12 {
+  height: 48px; }
+
+.lib-w-13 {
+  width: 52px; }
+
+.lib-h-13 {
+  height: 52px; }
+
+.lib-w-14 {
+  width: 56px; }
+
+.lib-h-14 {
+  height: 56px; }
+
+.lib-w-15 {
+  width: 60px; }
+
+.lib-h-15 {
+  height: 60px; }
+
+.lib-w-16 {
+  width: 64px; }
+
+.lib-h-16 {
+  height: 64px; }
+
+.lib-w-17 {
+  width: 68px; }
+
+.lib-h-17 {
+  height: 68px; }
+
+.lib-w-18 {
+  width: 72px; }
+
+.lib-h-18 {
+  height: 72px; }
+
+.lib-w-19 {
+  width: 76px; }
+
+.lib-h-19 {
+  height: 76px; }
+
+.lib-w-20 {
+  width: 80px; }
+
+.lib-h-20 {
+  height: 80px; }
+
+.lib-w-21 {
+  width: 84px; }
+
+.lib-h-21 {
+  height: 84px; }
+
+.lib-w-22 {
+  width: 88px; }
+
+.lib-h-22 {
+  height: 88px; }
+
+.lib-w-23 {
+  width: 92px; }
+
+.lib-h-23 {
+  height: 92px; }
+
+.lib-w-24 {
+  width: 96px; }
+
+.lib-h-24 {
+  height: 96px; }
+
+.lib-w-25 {
+  width: 100px; }
+
+.lib-h-25 {
+  height: 100px; }
+
+.lib-w-26 {
+  width: 104px; }
+
+.lib-h-26 {
+  height: 104px; }
+
+.lib-w-27 {
+  width: 108px; }
+
+.lib-h-27 {
+  height: 108px; }
+
+.lib-w-28 {
+  width: 112px; }
+
+.lib-h-28 {
+  height: 112px; }
+
+.lib-w-29 {
+  width: 116px; }
+
+.lib-h-29 {
+  height: 116px; }
+
+.lib-w-30 {
+  width: 120px; }
+
+.lib-h-30 {
+  height: 120px; }
+
+.lib-w-31 {
+  width: 124px; }
+
+.lib-h-31 {
+  height: 124px; }
+
+.lib-w-32 {
+  width: 128px; }
+
+.lib-h-32 {
+  height: 128px; }
+
+.lib-w-33 {
+  width: 132px; }
+
+.lib-h-33 {
+  height: 132px; }
+
+.lib-w-34 {
+  width: 136px; }
+
+.lib-h-34 {
+  height: 136px; }
+
+.lib-w-35 {
+  width: 140px; }
+
+.lib-h-35 {
+  height: 140px; }
+
+.lib-w-36 {
+  width: 144px; }
+
+.lib-h-36 {
+  height: 144px; }
+
+.lib-w-37 {
+  width: 148px; }
+
+.lib-h-37 {
+  height: 148px; }
+
+.lib-w-38 {
+  width: 152px; }
+
+.lib-h-38 {
+  height: 152px; }
+
+.lib-w-39 {
+  width: 156px; }
+
+.lib-h-39 {
+  height: 156px; }
+
+.lib-w-40 {
+  width: 160px; }
+
+.lib-h-40 {
+  height: 160px; }
+
+.lib-w-41 {
+  width: 164px; }
+
+.lib-h-41 {
+  height: 164px; }
+
+.lib-w-42 {
+  width: 168px; }
+
+.lib-h-42 {
+  height: 168px; }
+
+.lib-w-43 {
+  width: 172px; }
+
+.lib-h-43 {
+  height: 172px; }
+
+.lib-w-44 {
+  width: 176px; }
+
+.lib-h-44 {
+  height: 176px; }
+
+.lib-w-45 {
+  width: 180px; }
+
+.lib-h-45 {
+  height: 180px; }
+
 .lib-main-sidenav {
   height: 65px;
   position: fixed;
   width: 100vw;
   top: 0;
   z-index: 1000;
+  background: #F8F9FC;
   -moz-box-shadow: inset 0px -4px 4px rgba(113, 123, 188, 0.25);
   -webkit-box-shadow: inset 0 -4px 4px rgba(113, 123, 188, 0.25);
   box-shadow: inset 0px -4px 4px rgba(113, 123, 188, 0.25); }
@@ -2392,15 +2665,125 @@
   margin-left: 150px;
   font-size: 18px; }
 
+/*Region blue gray */
+/* Endregion blue gray */
+/* Region gray */
+/* Endregion gray */
+/* Region green */
+/* Endregion green*/
+/* Region red */
+/* Endregion red */
+.lib-simple-btn {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #EAECF5;
+  color: #3E4784; }
+  .lib-simple-btn.btn:focus {
+    box-shadow: none; }
+  .lib-simple-btn:hover {
+    color: #F2F4F7;
+    background: #3E4784; }
+
+.lib-enabled-btn {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #68AA76;
+  color: #F9FAFB; }
+  .lib-enabled-btn.btn:focus {
+    box-shadow: none; }
+  .lib-enabled-btn:hover {
+    color: #F9FAFB; }
+
+.lib-disabled-btn {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #F97066;
+  color: #7A271A; }
+  .lib-disabled-btn.btn:focus {
+    box-shadow: none; }
+  .lib-disabled-btn:hover {
+    color: #7A271A; }
+
+/*Region blue gray */
+/* Endregion blue gray */
+/* Region gray */
+/* Endregion gray */
+/* Region green */
+/* Endregion green*/
+/* Region red */
+/* Endregion red */
+.lib-white-card {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #FCFCFD;
+  box-shadow: 0px 0px 8px rgba(16, 19, 35, 0.25); }
+
+.lib-enabled-card {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #68AA76;
+  color: #F9FAFB; }
+
+.lib-disabled-card {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #F97066;
+  color: #7A271A; }
+
 .lib-content-container {
-  width: calc(100% - 250px);
-  left: 250px;
+  /*width: calc(100% - 250px);
+    left: 250px;
+    position: relative;
+    top: 67px;
+    max-height: calc(100% - 67px);*/
+  width: calc(100% - 390px);
+  left: 320px;
+  right: 70px;
   position: relative;
   top: 67px;
-  max-height: calc(100% - 67px); }
+  max-height: calc(100vh - 120px);
+  bottom: 53px;
+  overflow-y: scroll; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: white; }
 
 .lib-active {
   background: #F8F9FC;

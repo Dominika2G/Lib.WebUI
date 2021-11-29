@@ -2,19 +2,32 @@
 @import 'styles/spacing.scss';
 @import 'styles/fonts.scss';
 @import 'styles/radius.scss';
+@import 'styles/sizing.scss';
 @import 'theme/sidenav/lib-sidenav.scss';
 @import 'theme/sidebar/lib-sidebar.scss';
+@import 'theme/button/lib-button.scss';
+@import 'theme/card/lib-card.scss';
+
 
 .lib-content-container {
-    width: calc(100% - 250px);
+    /*width: calc(100% - 250px);
     left: 250px;
     position: relative;
     top: 67px;
-    max-height: calc(100% - 67px);
+    max-height: calc(100% - 67px);*/
+    width: calc(100% - 390px);
+    left: 320px;
+    right: 70px;
+    position: relative;
+    top: 67px;
+    max-height: calc(100vh - 120px);
+    bottom: 53px;
+    overflow-y: scroll;
 }
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 .lib-active {
