@@ -24,3 +24,26 @@
         outline: none;
     }
 }
+
+.lib-search-textbox {
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: $radius-13;
+    background: $blue-gray-50;
+    padding-left: $spacer-04;
+    box-shadow: inset 0px 4px 4px rgba(200, 204, 229, 0.25);
+
+    &.form-control {
+        &:focus {
+            background: $blue-gray-100;
+            border: 1.5px solid $blue-gray-700;
+            box-shadow: none;
+        }
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}

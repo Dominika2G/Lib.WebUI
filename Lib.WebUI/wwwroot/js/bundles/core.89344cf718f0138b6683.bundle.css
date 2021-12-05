@@ -2085,6 +2085,52 @@
   padding-left: 180px;
   padding-right: 180px; }
 
+.lib-m-64 {
+  margin: 256px; }
+
+.lib-mt-64 {
+  margin-top: 256px; }
+
+.lib-mb-64 {
+  margin-bottom: 256px; }
+
+.lib-ml-64 {
+  margin-left: 256px; }
+
+.lib-mr-64 {
+  margin-right: 256px; }
+
+.lib-my-64 {
+  margin-top: 256px;
+  margin-bottom: 256px; }
+
+.lib-mx-64 {
+  margin-left: 256px;
+  margin-right: 256px; }
+
+.lib-p-64 {
+  padding: 256px; }
+
+.lib-pt-64 {
+  padding-top: 256px; }
+
+.lib-pb-64 {
+  padding-bottom: 256px; }
+
+.lib-pl-64 {
+  padding-left: 256px; }
+
+.lib-pr-64 {
+  padding-right: 256px; }
+
+.lib-py-64 {
+  padding-top: 256px;
+  padding-bottom: 256px; }
+
+.lib-px-64 {
+  padding-left: 256px;
+  padding-right: 256px; }
+
 .lib-m-120 {
   margin: 480px; }
 
@@ -2385,6 +2431,21 @@
 
 .lib-br-name {
   border-radius: 16px; }
+
+.lib-br-name {
+  border-radius: 18px; }
+
+.lib-br-name {
+  border-radius: 20px; }
+
+.lib-br-name {
+  border-radius: 22px; }
+
+.lib-br-name {
+  border-radius: 24px; }
+
+.lib-br-name {
+  border-radius: 26px; }
 
 /* Region spacing */
 /* Endregion spacing */
@@ -2861,6 +2922,22 @@
     border: 1.5px solid #363F72;
     box-shadow: none; }
   .lib-textbox:focus-visible {
+    outline: none; }
+
+.lib-search-textbox {
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+  border: none;
+  border-radius: 26px;
+  background: #F8F9FC;
+  padding-left: 16px;
+  box-shadow: inset 0px 4px 4px rgba(200, 204, 229, 0.25); }
+  .lib-search-textbox.form-control:focus {
+    background: #EAECF5;
+    border: 1.5px solid #363F72;
+    box-shadow: none; }
+  .lib-search-textbox:focus-visible {
     outline: none; }
 
 .lib-content-container {
