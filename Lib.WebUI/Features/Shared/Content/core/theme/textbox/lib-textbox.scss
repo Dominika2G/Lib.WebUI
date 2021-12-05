@@ -1,0 +1,25 @@
+﻿@import '../../variables/colors.scss';
+@import '../../variables/spacing.scss';
+@import '../../variables/radius.scss';
+
+.lib-textbox {
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: $radius-03;
+    background: $gray-100;
+    padding-left: $spacer-04;
+
+    &.form-control {
+        &:focus {
+            background: $blue-gray-25;
+            border: 1.5px solid $blue-gray-700;
+            box-shadow: none;
+        }
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}

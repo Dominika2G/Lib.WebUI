@@ -1,0 +1,60 @@
+﻿@import '../../variables/colors.scss';
+
+@mixin lib-button {
+    border-radius: 6px;
+    text-align: center;
+    border: none;
+    padding: .375rem .75rem;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    &.btn {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.lib-simple-btn {
+    @include lib-button;
+    background: $blue-gray-100;
+    color: $blue-gray-600;
+
+    &:hover {
+        color: $gray-100;
+        background: $blue-gray-600;
+    }
+}
+
+.lib-dark-btn {
+    @include lib-button;
+    color: $gray-100;
+    background: $blue-gray-600;
+
+    &:hover {
+        background: $blue-gray-100;
+        color: $blue-gray-400;
+    }
+}
+
+.lib-enabled-btn {
+    @include lib-button;
+    background: $green-primary;
+    color: $gray-50;
+
+    &:hover {
+        color: $gray-50;
+    }
+}
+
+.lib-disabled-btn {
+    @include lib-button;
+    background: $red-primary;
+    color: $red-secondary;
+
+    &:hover {
+        color: $red-secondary;
+    }
+}

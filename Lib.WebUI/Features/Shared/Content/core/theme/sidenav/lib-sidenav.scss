@@ -1,0 +1,43 @@
+﻿.lib-main-sidenav {
+    height: 65px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 1000;
+    background: $blue-gray-50;
+    -moz-box-shadow: inset 0px -4px 4px rgba(113, 123, 188, 0.25);
+    -webkit-box-shadow: inset 0 -4px 4px rgba(113, 123, 188, 0.25);
+    box-shadow: inset 0px -4px 4px rgba(113, 123, 188, 0.25);
+
+    #MainNavBar {
+        #NavbarItems {
+            position: absolute;
+            right: 0;
+
+            .lib-menu {
+                .lib-menu-item {
+                    cursor: pointer;
+                    display: inline-block;
+                    position: relative;
+
+                    .lib-flag-img {
+                        position: absolute;
+                        top: 11px;
+                        left: 9px;
+                    }
+
+                    .lib-text-right {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.lib-navbar {
+    position: fixed;
+    right: 0;
+    width: 100vw;
+    height: 65px;
+}

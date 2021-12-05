@@ -1,6 +1,6 @@
 ﻿@import '../variables/spacing.scss';
 
-$spacing: (
+$sizing: (
     "1": $spacer-01,
     "2": $spacer-02,
     "3": $spacer-03,
@@ -49,64 +49,12 @@ $spacing: (
     "120": $spacer-120
 );
 
-@each $name, $value in $spacing {
-    .lib-m-#{$name} {
-        margin: $value;
+@each $name, $value in $sizing {
+    .lib-w-#{$name} {
+        width: $value !important;
     }
 
-    .lib-mt-#{$name} {
-        margin-top: $value;
-    }
-
-    .lib-mb-#{$name} {
-        margin-bottom: $value;
-    }
-
-    .lib-ml-#{$name} {
-        margin-left: $value;
-    }
-
-    .lib-mr-#{$name} {
-        margin-right: $value;
-    }
-
-    .lib-my-#{$name} {
-        margin-top: $value;
-        margin-bottom: $value;
-    }
-
-    .lib-mx-#{$name} {
-        margin-left: $value;
-        margin-right: $value;
-    }
-
-    .lib-p-#{$name} {
-        padding: $value;
-    }
-
-    .lib-pt-#{$name} {
-        padding-top: $value;
-    }
-
-    .lib-pb-#{$name} {
-        padding-bottom: $value;
-    }
-
-    .lib-pl-#{$name} {
-        padding-left: $value;
-    }
-
-    .lib-pr-#{$name} {
-        padding-right: $value;
-    }
-
-    .lib-py-#{$name} {
-        padding-top: $value;
-        padding-bottom: $value;
-    }
-
-    .lib-px-#{$name} {
-        padding-left: $value;
-        padding-right: $value;
+    .lib-h-#{$name} {
+        height: $value !important;
     }
 }
