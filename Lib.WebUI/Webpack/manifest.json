@@ -1,8 +1,10 @@
 {
-  "core.css": "autocore.308909344e81ed6c31fd.bundle.css",
-  "core.js": "autocore.308909344e81ed6c31fd.bundle.js",
+  "core.css": "autocore.64d9dee9b5856a5d4d4a.bundle.css",
+  "core.js": "autocore.64d9dee9b5856a5d4d4a.bundle.js",
   "test.css": "autotest.aad968d2be2696644ab3.bundle.css",
   "test.js": "autotest.aad968d2be2696644ab3.bundle.js",
   "home.css": "autohome.78eb25e160af9fa6dc9c.bundle.css",
-  "home.js": "autohome.78eb25e160af9fa6dc9c.bundle.js"
+  "home.js": "autohome.78eb25e160af9fa6dc9c.bundle.js",
+  "login.css": "autologin.29caf7e96eae8da59ecc.bundle.css",
+  "login.js": "autologin.29caf7e96eae8da59ecc.bundle.js"
 }

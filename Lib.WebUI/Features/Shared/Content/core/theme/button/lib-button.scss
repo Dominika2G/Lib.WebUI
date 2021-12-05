@@ -28,6 +28,17 @@
     }
 }
 
+.lib-dark-btn {
+    @include lib-button;
+    color: $gray-100;
+    background: $blue-gray-600;
+
+    &:hover {
+        background: $blue-gray-100;
+        color: $blue-gray-400;
+    }
+}
+
 .lib-enabled-btn {
     @include lib-button;
     background: $green-primary;

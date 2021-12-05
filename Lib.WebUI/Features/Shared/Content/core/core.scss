@@ -7,6 +7,7 @@
 @import 'theme/sidebar/lib-sidebar.scss';
 @import 'theme/button/lib-button.scss';
 @import 'theme/card/lib-card.scss';
+@import 'theme/textbox/lib-textbox.scss';
 
 
 .lib-content-container {
@@ -22,7 +23,12 @@
     top: 67px;
     max-height: calc(100vh - 120px);
     bottom: 53px;
-    overflow-y: scroll;
+    //overflow-y: scroll;
+
+    .lib-content {
+        min-width: 100%;
+        max-height: 100%;
+    }
 }
 
 a {

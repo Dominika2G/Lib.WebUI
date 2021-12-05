@@ -45,7 +45,8 @@ $spacing: (
     "42": $spacer-42,
     "43": $spacer-43,
     "44": $spacer-44,
-    "45": $spacer-45
+    "45": $spacer-45,
+    "120": $spacer-120
 );
 
 @each $name, $value in $spacing {

@@ -38,7 +38,7 @@ $colors: (
     }
 
     .lib-text-#{$name} {
-        color: $value !important;
+        color: $value;
     }
 
     .lib-border-color-#{$name} {

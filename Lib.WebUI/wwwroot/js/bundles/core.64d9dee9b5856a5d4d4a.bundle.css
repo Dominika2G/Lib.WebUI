@@ -2085,6 +2085,52 @@
   padding-left: 180px;
   padding-right: 180px; }
 
+.lib-m-120 {
+  margin: 480px; }
+
+.lib-mt-120 {
+  margin-top: 480px; }
+
+.lib-mb-120 {
+  margin-bottom: 480px; }
+
+.lib-ml-120 {
+  margin-left: 480px; }
+
+.lib-mr-120 {
+  margin-right: 480px; }
+
+.lib-my-120 {
+  margin-top: 480px;
+  margin-bottom: 480px; }
+
+.lib-mx-120 {
+  margin-left: 480px;
+  margin-right: 480px; }
+
+.lib-p-120 {
+  padding: 480px; }
+
+.lib-pt-120 {
+  padding-top: 480px; }
+
+.lib-pb-120 {
+  padding-bottom: 480px; }
+
+.lib-pl-120 {
+  padding-left: 480px; }
+
+.lib-pr-120 {
+  padding-right: 480px; }
+
+.lib-py-120 {
+  padding-top: 480px;
+  padding-bottom: 480px; }
+
+.lib-px-120 {
+  padding-left: 480px;
+  padding-right: 480px; }
+
 /* Region regular */
 /* Endregion regular */
 /* Region medium */
@@ -2343,274 +2389,280 @@
 /* Region spacing */
 /* Endregion spacing */
 .lib-w-1 {
-  width: 4px; }
+  width: 4px !important; }
 
 .lib-h-1 {
-  height: 4px; }
+  height: 4px !important; }
 
 .lib-w-2 {
-  width: 8px; }
+  width: 8px !important; }
 
 .lib-h-2 {
-  height: 8px; }
+  height: 8px !important; }
 
 .lib-w-3 {
-  width: 12px; }
+  width: 12px !important; }
 
 .lib-h-3 {
-  height: 12px; }
+  height: 12px !important; }
 
 .lib-w-4 {
-  width: 16px; }
+  width: 16px !important; }
 
 .lib-h-4 {
-  height: 16px; }
+  height: 16px !important; }
 
 .lib-w-5 {
-  width: 20px; }
+  width: 20px !important; }
 
 .lib-h-5 {
-  height: 20px; }
+  height: 20px !important; }
 
 .lib-w-6 {
-  width: 24px; }
+  width: 24px !important; }
 
 .lib-h-6 {
-  height: 24px; }
+  height: 24px !important; }
 
 .lib-w-7 {
-  width: 28px; }
+  width: 28px !important; }
 
 .lib-h-7 {
-  height: 28px; }
+  height: 28px !important; }
 
 .lib-w-8 {
-  width: 32px; }
+  width: 32px !important; }
 
 .lib-h-8 {
-  height: 32px; }
+  height: 32px !important; }
 
 .lib-w-9 {
-  width: 36px; }
+  width: 36px !important; }
 
 .lib-h-9 {
-  height: 36px; }
+  height: 36px !important; }
 
 .lib-w-10 {
-  width: 40px; }
+  width: 40px !important; }
 
 .lib-h-10 {
-  height: 40px; }
+  height: 40px !important; }
 
 .lib-w-11 {
-  width: 44px; }
+  width: 44px !important; }
 
 .lib-h-11 {
-  height: 44px; }
+  height: 44px !important; }
 
 .lib-w-12 {
-  width: 48px; }
+  width: 48px !important; }
 
 .lib-h-12 {
-  height: 48px; }
+  height: 48px !important; }
 
 .lib-w-13 {
-  width: 52px; }
+  width: 52px !important; }
 
 .lib-h-13 {
-  height: 52px; }
+  height: 52px !important; }
 
 .lib-w-14 {
-  width: 56px; }
+  width: 56px !important; }
 
 .lib-h-14 {
-  height: 56px; }
+  height: 56px !important; }
 
 .lib-w-15 {
-  width: 60px; }
+  width: 60px !important; }
 
 .lib-h-15 {
-  height: 60px; }
+  height: 60px !important; }
 
 .lib-w-16 {
-  width: 64px; }
+  width: 64px !important; }
 
 .lib-h-16 {
-  height: 64px; }
+  height: 64px !important; }
 
 .lib-w-17 {
-  width: 68px; }
+  width: 68px !important; }
 
 .lib-h-17 {
-  height: 68px; }
+  height: 68px !important; }
 
 .lib-w-18 {
-  width: 72px; }
+  width: 72px !important; }
 
 .lib-h-18 {
-  height: 72px; }
+  height: 72px !important; }
 
 .lib-w-19 {
-  width: 76px; }
+  width: 76px !important; }
 
 .lib-h-19 {
-  height: 76px; }
+  height: 76px !important; }
 
 .lib-w-20 {
-  width: 80px; }
+  width: 80px !important; }
 
 .lib-h-20 {
-  height: 80px; }
+  height: 80px !important; }
 
 .lib-w-21 {
-  width: 84px; }
+  width: 84px !important; }
 
 .lib-h-21 {
-  height: 84px; }
+  height: 84px !important; }
 
 .lib-w-22 {
-  width: 88px; }
+  width: 88px !important; }
 
 .lib-h-22 {
-  height: 88px; }
+  height: 88px !important; }
 
 .lib-w-23 {
-  width: 92px; }
+  width: 92px !important; }
 
 .lib-h-23 {
-  height: 92px; }
+  height: 92px !important; }
 
 .lib-w-24 {
-  width: 96px; }
+  width: 96px !important; }
 
 .lib-h-24 {
-  height: 96px; }
+  height: 96px !important; }
 
 .lib-w-25 {
-  width: 100px; }
+  width: 100px !important; }
 
 .lib-h-25 {
-  height: 100px; }
+  height: 100px !important; }
 
 .lib-w-26 {
-  width: 104px; }
+  width: 104px !important; }
 
 .lib-h-26 {
-  height: 104px; }
+  height: 104px !important; }
 
 .lib-w-27 {
-  width: 108px; }
+  width: 108px !important; }
 
 .lib-h-27 {
-  height: 108px; }
+  height: 108px !important; }
 
 .lib-w-28 {
-  width: 112px; }
+  width: 112px !important; }
 
 .lib-h-28 {
-  height: 112px; }
+  height: 112px !important; }
 
 .lib-w-29 {
-  width: 116px; }
+  width: 116px !important; }
 
 .lib-h-29 {
-  height: 116px; }
+  height: 116px !important; }
 
 .lib-w-30 {
-  width: 120px; }
+  width: 120px !important; }
 
 .lib-h-30 {
-  height: 120px; }
+  height: 120px !important; }
 
 .lib-w-31 {
-  width: 124px; }
+  width: 124px !important; }
 
 .lib-h-31 {
-  height: 124px; }
+  height: 124px !important; }
 
 .lib-w-32 {
-  width: 128px; }
+  width: 128px !important; }
 
 .lib-h-32 {
-  height: 128px; }
+  height: 128px !important; }
 
 .lib-w-33 {
-  width: 132px; }
+  width: 132px !important; }
 
 .lib-h-33 {
-  height: 132px; }
+  height: 132px !important; }
 
 .lib-w-34 {
-  width: 136px; }
+  width: 136px !important; }
 
 .lib-h-34 {
-  height: 136px; }
+  height: 136px !important; }
 
 .lib-w-35 {
-  width: 140px; }
+  width: 140px !important; }
 
 .lib-h-35 {
-  height: 140px; }
+  height: 140px !important; }
 
 .lib-w-36 {
-  width: 144px; }
+  width: 144px !important; }
 
 .lib-h-36 {
-  height: 144px; }
+  height: 144px !important; }
 
 .lib-w-37 {
-  width: 148px; }
+  width: 148px !important; }
 
 .lib-h-37 {
-  height: 148px; }
+  height: 148px !important; }
 
 .lib-w-38 {
-  width: 152px; }
+  width: 152px !important; }
 
 .lib-h-38 {
-  height: 152px; }
+  height: 152px !important; }
 
 .lib-w-39 {
-  width: 156px; }
+  width: 156px !important; }
 
 .lib-h-39 {
-  height: 156px; }
+  height: 156px !important; }
 
 .lib-w-40 {
-  width: 160px; }
+  width: 160px !important; }
 
 .lib-h-40 {
-  height: 160px; }
+  height: 160px !important; }
 
 .lib-w-41 {
-  width: 164px; }
+  width: 164px !important; }
 
 .lib-h-41 {
-  height: 164px; }
+  height: 164px !important; }
 
 .lib-w-42 {
-  width: 168px; }
+  width: 168px !important; }
 
 .lib-h-42 {
-  height: 168px; }
+  height: 168px !important; }
 
 .lib-w-43 {
-  width: 172px; }
+  width: 172px !important; }
 
 .lib-h-43 {
-  height: 172px; }
+  height: 172px !important; }
 
 .lib-w-44 {
-  width: 176px; }
+  width: 176px !important; }
 
 .lib-h-44 {
-  height: 176px; }
+  height: 176px !important; }
 
 .lib-w-45 {
-  width: 180px; }
+  width: 180px !important; }
 
 .lib-h-45 {
-  height: 180px; }
+  height: 180px !important; }
+
+.lib-w-120 {
+  width: 480px !important; }
+
+.lib-h-120 {
+  height: 480px !important; }
 
 .lib-main-sidenav {
   height: 65px;
@@ -2690,6 +2742,23 @@
     color: #F2F4F7;
     background: #3E4784; }
 
+.lib-dark-btn {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #F2F4F7;
+  background: #3E4784; }
+  .lib-dark-btn.btn:focus {
+    box-shadow: none; }
+  .lib-dark-btn:hover {
+    background: #EAECF5;
+    color: #717BBC; }
+
 .lib-enabled-btn {
   border-radius: 6px;
   text-align: center;
@@ -2738,7 +2807,8 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  overflow: hidden;
+  width: auto;
+  height: auto;
   background: #FCFCFD;
   box-shadow: 0px 0px 8px rgba(16, 19, 35, 0.25); }
 
@@ -2750,7 +2820,8 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  overflow: hidden;
+  width: auto;
+  height: auto;
   background: #68AA76;
   color: #F9FAFB; }
 
@@ -2762,9 +2833,37 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  overflow: hidden;
+  width: auto;
+  height: auto;
   background: #F97066;
   color: #7A271A; }
+
+/*Region blue gray */
+/* Endregion blue gray */
+/* Region gray */
+/* Endregion gray */
+/* Region green */
+/* Endregion green*/
+/* Region red */
+/* Endregion red */
+/* Region spacing */
+/* Endregion spacing */
+/* Region radius */
+/* Endregion radius */
+.lib-textbox {
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #F2F4F7;
+  padding-left: 16px; }
+  .lib-textbox.form-control:focus {
+    background: #FCFCFD;
+    border: 1.5px solid #363F72;
+    box-shadow: none; }
+  .lib-textbox:focus-visible {
+    outline: none; }
 
 .lib-content-container {
   /*width: calc(100% - 250px);
@@ -2778,8 +2877,10 @@
   position: relative;
   top: 67px;
   max-height: calc(100vh - 120px);
-  bottom: 53px;
-  overflow-y: scroll; }
+  bottom: 53px; }
+  .lib-content-container .lib-content {
+    min-width: 100%;
+    max-height: 100%; }
 
 a {
   text-decoration: none;
