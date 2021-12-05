@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lib.WebUI.Controllers;
+using Lib.WebUI.Features.Auth.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,13 @@ namespace Lib.WebUI.Features.Auth
         public IActionResult Index()
         {
             //return View();
-            return View("Login/Login");
+            return View("Login/Login", new LoginFormViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginFormViewModel model)
+        {
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

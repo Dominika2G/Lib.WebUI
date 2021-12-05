@@ -2751,13 +2751,13 @@
   position: relative;
   display: inline-block;
   overflow: hidden;
-  color: #F2F4F7;
-  background: #3E4784; }
+  color: #F9FAFB;
+  background: #293056; }
   .lib-dark-btn.btn:focus {
     box-shadow: none; }
   .lib-dark-btn:hover {
-    background: #EAECF5;
-    color: #717BBC; }
+    background: #363F72;
+    color: #F8F9FC; }
 
 .lib-enabled-btn {
   border-radius: 6px;
@@ -2804,20 +2804,18 @@
   text-align: center;
   border: none;
   padding: .375rem .75rem;
-  cursor: pointer;
   position: relative;
   display: inline-block;
   width: auto;
   height: auto;
-  background: #FCFCFD;
-  box-shadow: 0px 0px 8px rgba(16, 19, 35, 0.25); }
+  background: #F8F9FC;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
 .lib-enabled-card {
   border-radius: 6px;
   text-align: center;
   border: none;
   padding: .375rem .75rem;
-  cursor: pointer;
   position: relative;
   display: inline-block;
   width: auto;
@@ -2830,7 +2828,6 @@
   text-align: center;
   border: none;
   padding: .375rem .75rem;
-  cursor: pointer;
   position: relative;
   display: inline-block;
   width: auto;
@@ -2856,10 +2853,11 @@
   width: 100%;
   border: none;
   border-radius: 6px;
-  background: #F2F4F7;
-  padding-left: 16px; }
+  background: #FCFCFD;
+  padding-left: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
   .lib-textbox.form-control:focus {
-    background: #FCFCFD;
+    background: #EAECF5;
     border: 1.5px solid #363F72;
     box-shadow: none; }
   .lib-textbox:focus-visible {
