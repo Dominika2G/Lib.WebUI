@@ -1,5 +1,6 @@
 ﻿using Lib.WebUI.Controllers;
 using Lib.WebUI.Features.Auth.Models;
+using Lib.WebUI.Features.Book;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace Lib.WebUI.Features.Auth
         [HttpPost]
         public IActionResult Login(LoginFormViewModel model)
         {
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            /*return RedirectToAction(nameof(HomeController.Index), "Home");*/
+            return RedirectToAction(nameof(BookController.Index), "Book");
         }
     }
 }

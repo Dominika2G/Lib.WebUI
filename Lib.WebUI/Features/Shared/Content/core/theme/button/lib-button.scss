@@ -58,3 +58,12 @@
         color: $red-secondary;
     }
 }
+
+.lib-button-header-light {
+    @include lib-button;
+    background-color: transparent;
+
+    &:hover {
+        color: $red-secondary;
+    }
+}

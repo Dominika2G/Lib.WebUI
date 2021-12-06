@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Book\" />
     <Folder Include="Features\Shared\Content\core\theme\NewFolder\" />
     <Folder Include="Features\Statistics\" />
     <Folder Include="wwwroot\img\" />

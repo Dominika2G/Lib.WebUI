@@ -14,17 +14,19 @@
 <body>
     <header>
         <div class="lib-main-sidenav lib-bg-gray-50">
-            <nav id="MainNavBar" class="navbar navbar-expand-sm lib-pt-2">
+            <nav id="MainNavBar" class="navbar navbar-expand-sm lib-pt-3">
                 <div class="navbar-brand lib-pl-5 lib-pt-2">
                     Library
                 </div>
                 <div class="collapse navbar-collapse" id="NavbarItems">
                     <div class="d-inline-block lib-menu">
-                        <div class="lib-menu-item lib-pr-6">
-                            <span class="lib-content-bold-s lib-text-gray-50">Dominika Góralczyk</span>
+                        <div class="lib-menu-item lib-pr-3">
+                            <span class="lib-content-regular-l lib-text-gray-800">Dominika Góralczyk</span>
                         </div>
                         <div class="lib-menu-item lib-pr-6">
-                            <button class="btn lib-button-header-light lib-content-bold-s lib-text-gray-50 lib-w-25" href="#">LogOut</button>
+                            <button class="btn lib-button-header-light lib-w-10 lib-mb-2" href="#">
+                                <img src="~/img/Other/lib-logout.svg" />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -32,14 +34,27 @@
         </div>
     </header>
     <div class="sidebar">
-        <div class="lib-mt-10 lib-active">
-            <a class="lib-content-medium-xl lib-text-blue-gray-600 lib-m-6" href="#">Książki</a>
+        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-mt-10 lib-h-14">
+            Książki
+        </button>
+        <div class="dropdown-container lib-mt-3">
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Dodaj autora</a>
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">2. Dodaj książkę</a>
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">3. Generuj kody</a>
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">4. Znajdź książkę</a>
         </div>
-        <div class="">
-            <a class="lib-content-medium-xl lib-text-blue-gray-50 lib-m-6" href="#">Użytkownicy</a>
+        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
+            Uzytkownicy
+        </button>
+        <div class="dropdown-container lib-mt-3">
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Dodaj użytkownika</a>
         </div>
-        <div class="">
-            <a class="lib-content-medium-xl lib-text-blue-gray-50 lib-m-6" href="#">Statystyki</a>
+        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
+            Statystyki
+        </button>
+        <div class="dropdown-container lib-mt-3">
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Wszystkie książki</a>
+            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">2. Wypożyczone ksiażki</a>
         </div>
     </div>
     <div class="lib-content-container">
@@ -47,7 +62,22 @@
             @RenderBody()
         </main>
     </div>
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
 
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

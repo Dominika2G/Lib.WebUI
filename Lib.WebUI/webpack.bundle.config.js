@@ -6,6 +6,8 @@
 
         home: './Features/Home/Content/home.js',
 
-        login: './Features/Auth/Content/login/login.js'
+        login: './Features/Auth/Content/login/login.js',
+
+        book: './Features/Book/Content/book.js'
     }
 };
