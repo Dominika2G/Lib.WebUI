@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Features\Shared\Content\core\theme\NewFolder\" />
     <Folder Include="Features\Statistics\" />
+    <Folder Include="Features\User\Models\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 

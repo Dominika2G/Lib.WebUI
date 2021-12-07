@@ -1,0 +1,40 @@
+﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+    <div class="row lib-pt-8 justify-content-center">
+        <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAJ NOWEGO UŻYTKOWNIKA</span>
+    </div>
+    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
+        <div class="row lib-p-3">
+            <div class="col lib-m-8">
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
+                </div>
+            </div>
+            <div class="col lib-m-8">
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Rola" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Wychowawca" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end lib-pr-10 lib-pb-5">
+            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m">DODAJ</button>
+        </div>
+    </form>
+</div>
