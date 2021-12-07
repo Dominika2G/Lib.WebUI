@@ -9,7 +9,12 @@ $radius: (
     "radius-05": $radius-05,
     "radius-06": $radius-06,
     "radius-07": $radius-07,
-    "radius-08": $radius-08
+    "radius-08": $radius-08,
+    "radius-09": $radius-09,
+    "radius-10": $radius-10,
+    "radius-11": $radius-11,
+    "radius-12": $radius-12,
+    "radius-13": $radius-13
 );
 
 @each $name, $value in $radius {

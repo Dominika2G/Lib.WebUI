@@ -65,6 +65,9 @@ namespace Lib.WebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
+                    pattern: "{controller=Auth}/{action=Login}");
+                endpoints.MapControllerRoute(
+                    name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }

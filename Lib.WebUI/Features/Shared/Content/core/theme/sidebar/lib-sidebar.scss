@@ -1,6 +1,6 @@
 ﻿@import '../../variables/colors.scss';
 
-.sidebar {
+/*.sidebar {
     height: calc(100% - 67px);
     width: 250px;
     //position: absolute;
@@ -12,6 +12,47 @@
         padding: 8px;
         font-size: 24px;
         display: block;
+    }
+}*/
+
+.sidebar {
+    height: calc(100% - 67px);
+    width: 250px;
+    position: fixed;
+    background-color: $blue-gray-800;
+    top: 67px;
+
+
+    a, .dropdown-btn {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+
+    }
+
+    a:hover {
+        color: $gray-400;
+    } 
+
+    .dropdown-container {
+        display: none;
+    }
+
+    .active {
+        background: $blue-gray-50;
+        width: 90%;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        color: $blue-gray-600;
+        -moz-box-shadow: inset 0px 4px 4px rgba(41, 48, 86, 0.25);
+        -webkit-box-shadow: inset 0 0 8px rgba(113, 123, 188, 0.25);
+        box-shadow: inset 0px 4px 4px rgba(41, 48, 86, 0.25);
     }
 }
 

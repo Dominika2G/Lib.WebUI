@@ -1,0 +1,41 @@
+﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+    <div class="row lib-pt-8 lib-pb-4 justify-content-center">
+        <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAWANIE NOWEJ KSIĄŻKI</span>
+    </div>
+    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
+        <div class="row lib-p-3">
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    <input id="BookTitleForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Tytuł" type="text" />
+                </div>
+            </div>
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    <input id="BookAuthorForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Author" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row lib-p-3">
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    <textarea id="DescriptionForm" name="UserName" class="lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3" placeholder="Opis książki" type="text"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row lib-p-3">
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    <input id="BookCoverForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Dodaj okładkę" type="text" />
+                </div>
+            </div>
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    <input id="BookCodeForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Przypisz kod" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end lib-pr-5 lib-pb-5">
+            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m">DODAJ</button>
+        </div>
+    </form>
+</div>

@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Auth\Models\" />
-    <Folder Include="Features\Book\" />
     <Folder Include="Features\Shared\Content\core\theme\NewFolder\" />
     <Folder Include="Features\Statistics\" />
+    <Folder Include="Features\User\Models\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>
