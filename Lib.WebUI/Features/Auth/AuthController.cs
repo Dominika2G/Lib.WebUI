@@ -1,11 +1,6 @@
 ﻿using Lib.WebUI.Controllers;
 using Lib.WebUI.Features.Auth.Models;
-using Lib.WebUI.Features.Book;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Lib.WebUI.Features.Auth
 {

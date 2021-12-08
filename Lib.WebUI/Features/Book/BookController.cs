@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lib.WebUI.Features.Book
+namespace Lib.WebUI.Controllers
 {
     public class BookController : Controller
     {

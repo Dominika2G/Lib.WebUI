@@ -17,7 +17,7 @@
         <div class="col-auto">
             <div class="row justify-content-end ">
                 <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Zarządzaj</button>
+                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" onclick="edit()">Zarządzaj</button>
                 </div>
             </div>
             <div class="row justify-content-end">
@@ -28,3 +28,17 @@
         </div>
     </div>
 </div>
+<script>
+    //const editCardUrl = '@Url.Action(nameof(UserController.EditUser), "User")';
+
+    function editUser(){
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(UserController.EditUser), "User")'
+            });
+    };
+
+    function edit() {
+        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User")';
+    }
+</script>

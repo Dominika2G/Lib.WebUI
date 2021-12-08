@@ -16,7 +16,17 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core.scss */ \"./Features/Shared/Content/core/core.scss\");\n\n\nwindow.extensionCore = (() => {\n  const init = () => {\n    removeConstScript();\n    removePartialScript();\n  };\n\n  const removeConstScript = () => {\n    $(\"#ConstScriptElements\").remove();\n    $(\"#SharedConstScriptElements\").remove();\n  };\n\n  const removePartialScript = () => {\n    $(\".lib-partial-script-elements\").remove();\n  };\n\n  const getHash = str => {\n    let hash = 0,\n        i = 0,\n        len = str.length;\n\n    while (i < len) {\n      hash = (hash << 5) - hash + str.charCodeAt(i++) << 0;\n    }\n\n    return hash;\n  };\n\n  return {\n    init,\n    removePartialScript,\n    getHash\n  };\n})();\n\n$(function () {\n  extensionCore.init();\n});\n\n//# sourceURL=webpack://lib.webui/./Features/Shared/Content/core/core.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core.scss */ \"./Features/Shared/Content/core/core.scss\");\n/* harmony import */ var _http_client_http_client_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http-client/http-client.js */ \"./Features/Shared/Content/http-client/http-client.js\");\n/* harmony import */ var _http_client_http_client_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_http_client_http_client_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nwindow.extensionCore = (() => {\n  const init = () => {\n    removeConstScript();\n    removePartialScript();\n  };\n\n  const redirectToLink = link => {\n    window.location.href = link;\n  };\n\n  const removeConstScript = () => {\n    $(\"#ConstScriptElements\").remove();\n    $(\"#SharedConstScriptElements\").remove();\n  };\n\n  const removePartialScript = () => {\n    $(\".lib-partial-script-elements\").remove();\n  };\n\n  const getHash = str => {\n    let hash = 0,\n        i = 0,\n        len = str.length;\n\n    while (i < len) {\n      hash = (hash << 5) - hash + str.charCodeAt(i++) << 0;\n    }\n\n    return hash;\n  };\n\n  return {\n    init,\n    removePartialScript,\n    getHash,\n    redirectToLink\n  };\n})();\n\n$(function () {\n  extensionCore.init();\n});\n\n//# sourceURL=webpack://lib.webui/./Features/Shared/Content/core/core.js?");
+
+/***/ }),
+
+/***/ "./Features/Shared/Content/http-client/http-client.js":
+/*!************************************************************!*\
+  !*** ./Features/Shared/Content/http-client/http-client.js ***!
+  \************************************************************/
+/***/ (() => {
+
+eval("window.httpClient = {\n  get: function (params) {\n    return $.ajax({\n      url: params.url,\n      data: params.data,\n      type: 'get'\n    });\n  },\n  post: function (params) {\n    return $.ajax({\n      url: params.url,\n      data: params.data,\n      type: 'post'\n    });\n  }\n};\n\n//# sourceURL=webpack://lib.webui/./Features/Shared/Content/http-client/http-client.js?");
 
 /***/ }),
 
