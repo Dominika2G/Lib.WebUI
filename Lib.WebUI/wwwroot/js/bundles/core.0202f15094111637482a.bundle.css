@@ -3013,6 +3013,42 @@
 .lib-h-120 {
   height: 480px !important; }
 
+.lib-w-163 {
+  width: 652px !important; }
+
+.lib-h-163 {
+  height: 652px !important; }
+
+/*Region blue gray */
+/* Endregion blue gray */
+/* Region gray */
+/* Endregion gray */
+/* Region green */
+/* Endregion green*/
+/* Region red */
+/* Endregion red */
+/* Region spacing */
+/* Endregion spacing */
+/* Region radius */
+/* Endregion radius */
+.lib-select {
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #FCFCFD;
+  padding-left: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  .lib-select.form-control:focus {
+    background: #EAECF5;
+    border: 1.5px solid #363F72;
+    box-shadow: none; }
+  .lib-select:focus-visible {
+    outline: none; }
+  .lib-select.form-select {
+    background-image: none !important; }
+
 .lib-main-sidenav {
   height: 65px;
   position: fixed;
@@ -3174,6 +3210,56 @@
   .lib-button-header-light:hover {
     color: #7A271A; }
 
+/*.lib-form-button {
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: $radius-03;
+    background: $blue-gray-25;
+    padding-left: $spacer-04;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    &.form-control {
+        &:focus {
+            background: $blue-gray-100;
+            border: 1.5px solid $blue-gray-700;
+            box-shadow: none;
+        }
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &.btn {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.dropdown-item {
+    &:active {
+        color: $gray-50;
+        text-decoration: none;
+        background-color: $blue-gray-800;
+    }
+
+    &:hover {
+        color: $gray-50;
+        text-decoration: none;
+        background-color: $blue-gray-800;
+    }
+}
+
+.dropdown-toggle {
+    &::after {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+}*/
 /*Region blue gray */
 /* Endregion blue gray */
 /* Region gray */

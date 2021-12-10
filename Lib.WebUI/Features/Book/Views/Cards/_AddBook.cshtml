@@ -1,4 +1,4 @@
-﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+﻿<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-pt-8 lib-pb-4 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAWANIE NOWEJ KSIĄŻKI</span>
     </div>
@@ -11,7 +11,23 @@
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookAuthorForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Author" type="text" />
+                    @*<input id="BookAuthorForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Author" type="text" />*@
+                    @*<div class="dropdown w-100">
+            <button class="btn lib-form-button dropdown-toggle text-left lib-content-medium-l lib-text-gray-500" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu w-100 lib-content-medium-l lib-text-gray-500" aria-labelledby="dropdownMenuButton">
+                <options class="dropdown-item" href="#">Action</options>
+                <options class="dropdown-item" href="#">Another action</options>
+                <options class="dropdown-item" href="#">Something else here</options>
+            </div>
+        </div>*@
+                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" aria-label="">
+                        <option class="lib-content-medium-l lib-text-gray-500" selected>Autor</option>
+                        <option class="lib-content-medium-l lib-text-gray-500" value="1">Polska</option>
+                        <option class="lib-content-medium-l lib-text-gray-500" value="2">Anglia</option>
+                        <option class="lib-content-medium-l lib-text-gray-500" value="3">Niemcy</option>
+                    </select>
                 </div>
             </div>
         </div>
