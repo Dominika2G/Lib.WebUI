@@ -35,7 +35,7 @@
         </div>
     </header>
     <div class="sidebar">
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-mt-10 lib-h-14">
+        <button class="dropdown-btn active lib-content-medium-xl lib-text-blue-gray-50 lib-mt-10 lib-h-14">
             Książki
         </button>
         <div class="dropdown-container lib-mt-3">
@@ -44,14 +44,14 @@
             <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.GenerateCode), "Book")">3. Generuj kody</a>
             <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.Index), "Book")">4. Znajdź książkę</a>
         </div>
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
+        <button class="dropdown-btn active lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
             Użytkownicy
         </button>
         <div class="dropdown-container lib-mt-3">
             <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.Index), "User")">1. Podgląd użytkowników</a>
             <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.AddUser), "User")">2. Dodaj użytkownika</a>
         </div>
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
+        <button class="dropdown-btn active lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
             Statystyki
         </button>
         <div class="dropdown-container lib-mt-3">
@@ -64,7 +64,7 @@
             @RenderBody()
         </main>
     </div>
-    <script>
+    @*<script>
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
 
@@ -79,7 +79,7 @@
                 }
             });
         }
-    </script>
+    </script>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

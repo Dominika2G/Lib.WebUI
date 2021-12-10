@@ -30,7 +30,7 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult BookDetails()
         {
-            return View("Cards/_BookDetails");
+            return View("BookDetail");
         }
     }
 }

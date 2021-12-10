@@ -1,14 +1,26 @@
-﻿<div class="row lib-mt-8">
-    <a class="lib-content-medium-l lib-text-gray-800" onclick="back()"><img src="~/img/Other/lib-chervon-left.svg"/>Wróć</a>
+﻿<div class="lib-mb-5 lib-mt-5 lib-book-detail-card w-100 lib-mb-5">
+    <div class="row lib-p-3">
+        <div class="col-auto">
+            <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:200px; height: 250px;" />
+        </div>
+        <div class="col lib-pr-5">
+            <div class="row lib-mt-1">
+                <span class="lib-content-semibold-xl lib-text-gray-800">Stephen King</span>
+            </div>
+            <div class="row">
+                <span class="lib-content-semibold-l lib-text-gray-600 lib-mt-2">Doktor sen</span>
+            </div>
+            <div class="row text-left lib-mt-2 lib-mt-2">
+                <span class="lib-content-regular-m">Grupa staruszków nazywająca się Prawdziwym Węzłem przemierza autostrady Ameryki w poszukiwaniu pożywienia. Z pozoru są nieszkodliwi - emeryci odziani w poliester, nierozstający się ze swoimi samochodami turystycznymi. Jednak Dan Torrance już wie, a rezolutna dwunastolatka Abra Stone wkrótce się przekona, że Prawdziwy Węzeł to prawie nieśmiertelne istoty żywiące się substancją wytwarzaną przez poddane śmiertelnym torturom dzieci obdarzone tym samym darem, co Dan.</span>
+            </div>
+            <div class="row justify-content-end lib-mt-3">
+                <span class="lib-content-medium-m lib-text-gray-600">Rozwiń opis <img class="lib-mb-1" src="~/img/Other/lib-arrow-down.svg" /></span>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="row justify-content-end">
+                <span class="lib-content-medium-m lib-w-25">Ocena: 7.5</span>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="row">
-    <partial name="Cards/_BookCard" />
-</div>
-<div class="row">
-    comments section
-</div>
-<script>
-    function back() {
-        window.location.href = '@Url.Action(nameof(BookController.Index), "Book")'
-    }
-</script>
