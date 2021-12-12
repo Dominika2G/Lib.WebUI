@@ -1,4 +1,5 @@
-﻿@using Lib.WebUI
+﻿@using Microsoft.Extensions.Configuration
+@using Lib.WebUI
 @using Lib.WebUI.Models
 @using Lib.WebUI.Webpack
 @using Lib.WebUI.Configuration
@@ -9,4 +10,5 @@
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@inject IConfiguration Configuration
 @inject Microsoft.Extensions.Options.IOptions<AppSettingsOptions> AppSettingsOptionsAccessor

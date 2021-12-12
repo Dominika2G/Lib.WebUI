@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Features\User\Models\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\lib\chart\" />
   </ItemGroup>
 
 </Project>

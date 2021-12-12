@@ -8,7 +8,7 @@ namespace Lib.WebUI.Controllers
 {
     public class StatisticsController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View("Statistics");
         }
