@@ -10,6 +10,8 @@
 
         book: './Features/Book/Content/book.js',
 
-        user: './Features/User/Content/user.js'
+        user: './Features/User/Content/user.js',
+
+        statistics: './Features/Statistics/Content/statistics.js'
     }
 };
