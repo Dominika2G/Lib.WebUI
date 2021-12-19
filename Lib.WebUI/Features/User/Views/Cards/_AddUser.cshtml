@@ -1,35 +1,34 @@
-﻿<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
+﻿@model CreateUserViewModel
+
+<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-pt-8 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAJ NOWEGO UŻYTKOWNIKA</span>
     </div>
-    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
+    <form asp-controller="User" asp-action="AddUser" data-method="POST" id="LoginForm" asp-antiforgery="false">
         <div class="row lib-p-7">
             <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
+                    <input id="FirstNameAddForm" name="FirstName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
+                    <input id="LastNameAddForm" name="LastName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
+                    <input id="PasswordHashAddForm" name="PasswordHash" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
+                    <input id="ConfirmPasswordAddForm" name="ConfirmPassword" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
                 </div>
             </div>
             <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
+                    <input id="EmailAddForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Rola" type="text" />
+                    <input id="RoleIdAddForm" name="RoleId" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Rola" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
-                </div>
-                <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Wychowawca" type="text" />
+                    <input id="ClassAddForm" name="Class" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
                 </div>
             </div>
         </div>
