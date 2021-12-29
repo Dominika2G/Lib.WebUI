@@ -11,13 +11,13 @@
         </div>
         <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
             <div class="row lib-mb-10">
-                <input id="EmailForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwa u żytkownika" type="text" />
+                <input id="EmailForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwa u żytkownika" type="text" required/>
             </div>
             <div class="row lib-mb-12">
-                <input id="PasswordForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="password" />
+                <input id="PasswordForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="password" data-val-required="The MyDate field is required." required/>
             </div>
             <div class="row justify-content-end">
-                <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10">Zaloguj</button>
+                <button type="submit" class="btn lib-dark-btn lib-content-semibold-m lib-text-gray-50 lib-w-24 lib-h-10">ZALOGUJ</button>
             </div>
         </form>
     </div>

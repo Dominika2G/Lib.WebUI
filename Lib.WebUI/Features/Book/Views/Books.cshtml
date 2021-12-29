@@ -1,10 +1,51 @@
-﻿<div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
+﻿@model BookViewModel
+<div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
     <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." />
     <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; ">
         <img src="~/img/Other/lib-search.svg" />
     </button>
 </div>
-<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
+@foreach (var book in Model.BookDetails)
+{
+    <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
+        <div class="row lib-p-3">
+            <div class="col-auto">
+                <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
+            </div>
+            <div class="col">
+                <div class="row lib-mt-5">
+                    <span class="lib-content-medium-xl">@book.AuthorFirstName @book.AuthorLastName</span>
+                </div>
+                <div class="row">
+                    <span class="lib-content-medium-l">@book.Title</span>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="row justify-content-end ">
+                    <div class="lib-p-2">
+                        @if(book.IsAvailable)
+                        {
+                            <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
+                        }
+                        else
+                        {
+                            <span class="lib-disabled-card lib-content-semibold-s lib-w-30">NEDOSTĘPNY</span>
+                        }
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="text-center lib-p-2">
+                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
+                    </div>
+                    <div class="text-center lib-p-2">
+                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
     <div class="row lib-p-3">
         <div class="col-auto">
             <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
@@ -126,7 +167,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <script>
     function showDetails() {
         window.location.href = '@Url.Action(nameof(BookController.BookDetails), "Book")';

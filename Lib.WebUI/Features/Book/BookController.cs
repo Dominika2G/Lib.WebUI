@@ -12,8 +12,28 @@ namespace Lib.WebUI.Controllers
 {
     public class BookController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                
+                HttpResponseMessage res = await client.GetAsync("Book/AllBooks");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
+                    var model = new BookViewModel()
+                    {
+                        BookDetails = books.BookDetails
+                    };
+                    return View("Books", model);
+                   // return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
             return View("Books");
         }
 
@@ -51,8 +71,29 @@ namespace Lib.WebUI.Controllers
             return View("Cards/_CodeGenerate");
         }
 
-        public IActionResult AddBook()
+        public async Task<IActionResult> AddBookAsync()
         {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage res = await client.GetAsync("Book/GetAuthors");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    List<Author> x = await res.Content.ReadAsAsync<List<Author>>();
+                    var model = new AddBookViewModel()
+                    {
+                        Authors = x
+                    };
+
+                    return View("Cards/_AddBook", model);
+                }
+            }
+            
             return View("Cards/_AddBook", new AddBookViewModel());
         }
 
@@ -69,9 +110,11 @@ namespace Lib.WebUI.Controllers
                     Title = model.Title,
                     Description = model.Description,
                     AuthorId = model.AuthorId,
-                    Cover = model.Cover,
+                    //AuthorId = 1,
+                    Cover = "",
                     BarCode = model.BarCode,
-                    IsAvailable = model.IsAvailable
+                    IsAvailable = true,
+                    IsReserved = false
                 };
                 StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
                 HttpResponseMessage res = await client.PostAsync("Book/AddBook", t);
