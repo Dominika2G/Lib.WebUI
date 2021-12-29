@@ -31,7 +31,6 @@ namespace Lib.WebUI.Controllers
                         BookDetails = books.BookDetails
                     };
                     return View("Books", model);
-                   // return RedirectToAction(nameof(BookController.Index), "Book");
                 }
             }
             return View("Books");
@@ -127,9 +126,25 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-
-        public IActionResult BookDetails()
+        [HttpGet]
+        public async Task<IActionResult> BookDetails(long id)
         {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage res = await client.GetAsync(string.Format("Book/BookDetail?Id={0}", id));
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    var model = await res.Content.ReadAsAsync<BookDetailViewModel>();
+
+                    return View("BookDetail", model);
+                }
+            }
             return View("BookDetail");
         }
     }

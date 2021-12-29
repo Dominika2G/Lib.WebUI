@@ -1,8 +1,9 @@
-﻿<div class="row lib-mt-8 lib-mx-10">
+﻿@model BookDetailViewModel
+<div class="row lib-mt-8 lib-mx-10">
     <a class="lib-content-medium-m lib-text-gray-800" onclick="back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
 </div>
 <div class="row lib-mx-10">
-    <partial name="Cards/_BookDetails" />
+    <partial name="Cards/_BookDetails" model="Model" />
 </div>
 <div class="row lib-mx-35">
     @for (int i = 0; i < 5; i++)

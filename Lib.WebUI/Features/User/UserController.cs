@@ -12,8 +12,27 @@ namespace Lib.WebUI.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage res = await client.GetAsync("Auth/GetUsers");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    var books = await res.Content.ReadAsAsync<UserCollectionViewModel>();
+                    var model = new UserCollectionViewModel()
+                    {
+                        UsersCollection = books.UsersCollection
+                    };
+                    return View("Users", model);
+                }
+            }
             return View("Users");
         }
 
@@ -30,15 +49,14 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //HttpResponseMessage Res = await client.GetAsync("WeatherForecast");
                 var content = new
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
                     RoleId = model.RoleId,
-                    PasswordHash = model.Password,
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword,
                     Class = model.Class
                 };
                 StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
@@ -54,9 +72,48 @@ namespace Lib.WebUI.Controllers
                 return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        public IActionResult EditUser()
+        /*public IActionResult EditUser()
         {
-            return View("Cards/_EditUser");
+            return View("Cards/_EditUser", model);
+        }*/
+        public IActionResult EditUser(long id)
+        {
+            var model = new EditUserViewModel()
+            {
+                UserId = id
+            };
+            return View("Cards/_EditUser", model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditUserViewModel model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    UserId = 1,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword,
+                    IsActive = model.IsActive
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Auth/EditUser", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    //var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    return RedirectToAction(nameof(UserController.Index), "User");
+                }
+            }
+
+            return RedirectToAction(nameof(UserController.Index), "User");
+        }
+
     }
 }

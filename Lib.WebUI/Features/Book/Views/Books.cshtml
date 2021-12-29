@@ -35,7 +35,7 @@
                 </div>
                 <div class="row justify-content-end">
                     <div class="text-center lib-p-2">
-                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
+                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>
                     </div>
                     <div class="text-center lib-p-2">
                         <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
@@ -169,7 +169,19 @@
     </div>
 </div>*@
 <script>
-    function showDetails() {
-        window.location.href = '@Url.Action(nameof(BookController.BookDetails), "Book")';
+    async function showDetails(id) {
+        var model = {
+            id: id
+        };
+        //window.location.href = '@Url.Action(nameof(BookController.BookDetails), "Book")';
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action(nameof(BookController.BookDetails), "Book")',
+            data: model,
+            success: {
+            }
+
+
+        });
     }
 </script>
