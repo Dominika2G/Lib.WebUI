@@ -23,7 +23,7 @@
             <div class="col-auto">
                 <div class="row justify-content-end ">
                     <div class="lib-p-2">
-                        @if(book.IsAvailable)
+                        @if (book.IsAvailable)
                         {
                             <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
                         }
@@ -35,7 +35,8 @@
                 </div>
                 <div class="row justify-content-end">
                     <div class="text-center lib-p-2">
-                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>
+                        @*<button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>*@
+                        <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                     </div>
                     <div class="text-center lib-p-2">
                         <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
