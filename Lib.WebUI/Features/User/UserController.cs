@@ -94,7 +94,7 @@ namespace Lib.WebUI.Controllers
                 client.DefaultRequestHeaders.Clear();
                 var content = new
                 {
-                    UserId = 1,
+                    UserId = model.UserId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,

@@ -57,6 +57,12 @@
     color: $red-secondary;
 }
 
+.lib-reserved-card {
+    @include lib-card;
+    background: $orange-300;
+    color: $orange-800;
+}
+
 .lib-book-detail-card {
     @include lib-card-shape;
     background: $blue-gray-100;

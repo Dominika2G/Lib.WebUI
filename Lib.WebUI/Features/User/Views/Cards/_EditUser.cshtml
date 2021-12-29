@@ -28,12 +28,14 @@
                     <input id="UserNameForm" name="Class" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-@*                    <input id="UserNameForm" name="IsActive" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Wychowawca" type="text" />*@
                     <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="IsActive" aria-label="">
                         <option class="lib-content-medium-l lib-text-gray-500" selected>Aktywnosć konta</option>
                         <option class="lib-content-medium-l lib-text-gray-500" value="true">Aktywny</option>
                         <option class="lib-content-medium-l lib-text-gray-500" value="false">Nieaktywny</option>
                     </select>
+                </div>
+                <div class="row lib-mb-6">
+                    <input id="UserId" name="UserId" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="number" value="@Model.UserId" hidden/>
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 .lib-bg-color-blue-gray-25 {
   background-color: #FCFCFD; }
 
@@ -3027,6 +3029,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 /* Region spacing */
 /* Endregion spacing */
 /* Region radius */
@@ -3039,7 +3043,7 @@
   border-radius: 6px;
   background: #FCFCFD;
   padding-left: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25); }
   .lib-select.form-control:focus {
     background: #EAECF5;
     border: 1.5px solid #363F72;
@@ -3087,6 +3091,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 .sidebar {
   height: calc(100% - 67px);
   width: 250px;
@@ -3129,6 +3135,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 .lib-simple-btn {
   border-radius: 6px;
   text-align: center;
@@ -3268,6 +3276,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 .lib-white-card {
   border-radius: 6px;
   text-align: center;
@@ -3329,6 +3339,18 @@
   background: #F97066;
   color: #7A271A; }
 
+.lib-reserved-card {
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  padding: .375rem .75rem;
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background: #FEB273;
+  color: #9C2A10; }
+
 .lib-book-detail-card {
   text-align: center;
   border: none;
@@ -3360,6 +3382,8 @@
 /* Endregion green*/
 /* Region red */
 /* Endregion red */
+/* Region orange */
+/* Endregion */
 /* Region spacing */
 /* Endregion spacing */
 /* Region radius */
@@ -3372,7 +3396,7 @@
   border-radius: 6px;
   background: #FCFCFD;
   padding-left: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25); }
   .lib-textbox.form-control:focus {
     background: #EAECF5;
     border: 1.5px solid #363F72;
@@ -3420,7 +3444,7 @@
   border-radius: 6px;
   background: #FCFCFD;
   padding-left: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25); }
   .lib-textera.form-control:focus {
     background: #EAECF5;
     border: 1.5px solid #363F72;

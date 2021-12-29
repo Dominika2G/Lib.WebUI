@@ -20,155 +20,67 @@
                     <span class="lib-content-medium-l">@book.Title</span>
                 </div>
             </div>
-            <div class="col-auto">
-                <div class="row justify-content-end ">
-                    <div class="lib-p-2">
-                        @if (book.IsAvailable)
-                        {
-                            <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
-                        }
-                        else
-                        {
-                            <span class="lib-disabled-card lib-content-semibold-s lib-w-30">NEDOSTĘPNY</span>
-                        }
+            @if (book.IsReserved)
+            {
+                <div class="col-auto">
+                    <div class="row justify-content-end ">
+                        <div class="lib-p-2">
+                            <span class="lib-reserved-card lib-content-semibold-s lib-w-40">ZAREZERWOWANA</span>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-end">
+                    <div class="row justify-content-end">
                     <div class="text-center lib-p-2">
                         @*<button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>*@
                         <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                     </div>
                     <div class="text-center lib-p-2">
-                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
+                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40">Anuluj rezerwację</button>
                     </div>
                 </div>
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-auto">
+                    <div class="row justify-content-end ">
+                        <div class="lib-p-2">
+                            @if (book.IsAvailable)
+                            {
+                                <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
+                            }
+                            else
+                            {
+                                <span class="lib-disabled-card lib-content-semibold-s lib-w-30">NEDOSTĘPNY</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="text-center lib-p-2">
+                            @*<button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>*@
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                        </div>
+                        @if(book.IsAvailable)
+                        {
+                            <div class="text-center lib-p-2">
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
+                            </div>
+                        }
+                        <div class="text-center lib-p-2">
+                            @if (book.IsAvailable)
+                            {
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Wypożycz</button>
+                            }
+                            else
+                            {
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Zwróć</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-    </div>
+            </div>
 }
-@*<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
-    <div class="row lib-p-3">
-        <div class="col-auto">
-            <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-        </div>
-        <div class="col">
-            <div class="row lib-mt-5">
-                <span class="lib-content-medium-xl">Stephen King</span>
-            </div>
-            <div class="row">
-                <span class="lib-content-medium-l">Doktor sen</span>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="row justify-content-end ">
-                <div class="lib-p-2">
-                    <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
-                </div>
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
-    <div class="row lib-p-3">
-        <div class="col-auto">
-            <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-        </div>
-        <div class="col">
-            <div class="row lib-mt-5">
-                <span class="lib-content-medium-xl">Stephen King</span>
-            </div>
-            <div class="row">
-                <span class="lib-content-medium-l">Doktor sen</span>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="row justify-content-end">
-                <div class="lib-p-2">
-                    <span class="lib-disabled-card lib-content-semibold-s lib-w-30">NEDOSTĘPNY</span>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
-                </div>
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
-    <div class="row lib-p-3">
-        <div class="col-auto">
-            <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-        </div>
-        <div class="col">
-            <div class="row lib-mt-5">
-                <span class="lib-content-medium-xl">Stephen King</span>
-            </div>
-            <div class="row">
-                <span class="lib-content-medium-l">Doktor sen</span>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="row justify-content-end ">
-                <div class="lib-p-2">
-                    <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
-                </div>
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
-    <div class="row lib-p-3">
-        <div class="col-auto">
-            <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-        </div>
-        <div class="col">
-            <div class="row lib-mt-5">
-                <span class="lib-content-medium-xl">Stephen King</span>
-            </div>
-            <div class="row">
-                <span class="lib-content-medium-l">Doktor sen</span>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="row justify-content-end ">
-                <div class="lib-p-2">
-                    <span class="lib-enabled-card lib-content-semibold-s lib-w-30">DOSTĘPNY</span>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails()">Opis</button>
-                </div>
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
-                </div>
-                <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Wypożycz</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
 <script>
     async function showDetails(id) {
         var model = {
