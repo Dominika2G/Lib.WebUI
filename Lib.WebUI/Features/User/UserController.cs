@@ -123,7 +123,7 @@ namespace Lib.WebUI.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetUserBooks()
+        public async Task<IActionResult> GetUserBooks(long id)
         {
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
@@ -131,7 +131,7 @@ namespace Lib.WebUI.Controllers
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
 
-                HttpResponseMessage res = await client.GetAsync("Book/GetUserBooks");
+                HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetUserBooks?Id={0}", id));
 
                 if (res.IsSuccessStatusCode)
                 {

@@ -8,5 +8,16 @@ namespace Lib.WebUI.Features.Book.Models
     public class UserBooks
     {
         public long BookId { get; set; }
+        public string Title { get; set; }
+        public string AuthorFirstName { get; set; }
+        public string AuthorLastName { get; set; }
+        public string Email { get; set; }
+        public long UserId { get; set; }
+        public bool IsAvailable { get; set; }
+        public bool IsReserved { get; set; }
+        public DateTime LoanDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public int RentalPeriod { get; set; }
+        public string Description { get; set; }
     }
 }

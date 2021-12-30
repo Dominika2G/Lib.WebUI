@@ -36,7 +36,7 @@
             <div class="row justify-content-end">
                 <div class="text-center lib-p-2">
                     @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>*@
-                    <button onclick="showModal()" class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" type="button" data-toggle="ajax-modal" data-target="#UserStatistics" data-url="@Url.Action(nameof(UserController.ShowStatistics), "User"))">Statystyki</button>
+                    <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.GetUserBooks), "User", new { id = @Model.UserId })'>Statystyki</a>
                 </div>
             </div>
         </div>
