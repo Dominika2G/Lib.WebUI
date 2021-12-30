@@ -1,4 +1,5 @@
-﻿using Lib.WebUI.Features.User.Models;
+﻿using Lib.WebUI.Features.Book.Models;
+using Lib.WebUI.Features.User.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -114,6 +115,35 @@ namespace Lib.WebUI.Controllers
 
             return RedirectToAction(nameof(UserController.Index), "User");
         }
+        [HttpGet]
+        public IActionResult ShowStatistics()
+        {
+            return PartialView("Cards/_UserModal");
+        }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserBooks()
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage res = await client.GetAsync("Book/GetUserBooks");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var bookCollection = await res.Content.ReadAsAsync<List<UserBooks>>();
+                    var model = new UserBooksViewModel()
+                    {
+                        Books = bookCollection
+                    };
+                    return View("Cards/_UserModal", model);
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
     }
 }

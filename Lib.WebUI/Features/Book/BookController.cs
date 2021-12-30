@@ -147,5 +147,125 @@ namespace Lib.WebUI.Controllers
             }
             return View("BookDetail");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> BookReserved(Bookstatusrequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    UserId = model.UserId,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/BookReservation", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ReturnBook(Bookstatusrequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    UserId = model.UserId,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/ReturnBook", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeStateReservation(Bookstatusrequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    UserId = model.UserId,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/ChangeBookReservation", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BorrowBook(Bookstatusrequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    UserId = model.UserId,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/BorrowBook", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        /*[HttpGet]
+        public async Task<IActionResult> GetUserBooks()
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage res = await client.GetAsync("Book/GetUserBooks");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var bookCollection = await res.Content.ReadAsAsync<List<UserBooks>>();
+                    var model = new UserBooksViewModel()
+                    {
+                        Books = bookCollection
+                    };
+                    return View("Cards/_UserModal", model);
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }*/
     }
 }

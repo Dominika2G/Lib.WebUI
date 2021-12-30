@@ -1,0 +1,12 @@
+﻿@model UserBooksViewModel
+
+@foreach (var book in Model.Books)
+{
+    <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
+        <div class="row lib-p-3">
+            <div class="col-auto">
+                @book.BookId
+            </div>
+        </div>
+    </div>
+}

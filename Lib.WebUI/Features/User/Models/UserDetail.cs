@@ -13,5 +13,6 @@ namespace Lib.WebUI.Features.User.Models
         public string Email { get; set; }
         public string Class { get; set; }
         public int IsActive { get; set; }
+        public string RoleName { get; set; }
     }
 }

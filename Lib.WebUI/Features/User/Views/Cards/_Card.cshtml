@@ -1,5 +1,4 @@
 ﻿@model UserDetail
-
 <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
     <div class="row lib-p-3">
         <div class="col-auto">
@@ -10,7 +9,18 @@
                 <span class="lib-content-medium-l">@Model.FirstName @Model.LastName</span>
             </div>
             <div class="row">
-                <span class="lib-content-regular-m">Uczeń</span>
+                @if (Model.RoleName == "User")
+                {
+                    <span class="lib-content-regular-m">
+                        Użytkownik
+                    </span>
+                }
+                else
+                {
+                    <span class="lib-content-regular-m">
+                        @Model.RoleName
+                    </span>
+                }
             </div>
             <div class="row ">
                 <span class="lib-content-regular-s">Klasa @Model.Class</span>
@@ -25,7 +35,8 @@
             </div>
             <div class="row justify-content-end">
                 <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>
+                    @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>*@
+                    <button onclick="showModal()" class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" type="button" data-toggle="ajax-modal" data-target="#UserStatistics" data-url="@Url.Action(nameof(UserController.ShowStatistics), "User"))">Statystyki</button>
                 </div>
             </div>
         </div>

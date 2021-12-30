@@ -29,14 +29,16 @@
                         </div>
                     </div>
                     <div class="row justify-content-end">
-                    <div class="text-center lib-p-2">
-                        @*<button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>*@
-                        <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                        <div class="text-center lib-p-2">
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                        </div>
+                        <div class="text-center lib-p-2">
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
+                        </div>
+                        <div class="text-center lib-p-2">
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
+                        </div>
                     </div>
-                    <div class="text-center lib-p-2">
-                        <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40">Anuluj rezerwację</button>
-                    </div>
-                </div>
                 </div>
             }
             else
@@ -56,23 +58,22 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="text-center lib-p-2">
-                            @*<button class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" onclick="showDetails(@book.BookId)">Opis</button>*@
                             <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
                         @if(book.IsAvailable)
                         {
                             <div class="text-center lib-p-2">
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Rezerwuj</button>
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="bookReservation(@book.BookId)">Rezerwuj</button>
                             </div>
                         }
                         <div class="text-center lib-p-2">
                             @if (book.IsAvailable)
                             {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Wypożycz</button>
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="borrowBook(@book.BookId)">Wypożycz</button>
                             }
                             else
                             {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30">Zwróć</button>
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
                             }
                         </div>
                     </div>
@@ -82,7 +83,7 @@
             </div>
 }
 <script>
-    async function showDetails(id) {
+@*    async function showDetails(id) {
         var model = {
             id: id
         };
@@ -96,5 +97,77 @@
 
 
         });
+    }*@
+
+    function bookReservation(id) {
+        var model = {
+            UserId: 2,
+            BookId: id
+        }
+
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.BookReserved), "Book")',
+                data: model
+            })
+            .then(
+                () => {
+                    window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
+                }
+            )
+    }
+
+    function returnBook(id) {
+        var model = {
+            UserId: 2,
+            BookId: id
+        }
+
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.ReturnBook), "Book")',
+                data: model
+            })
+            .then(
+                () => {
+                    window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
+                }
+            )
+    }
+
+    function changeStateReservation(id) {
+        var model = {
+            UserId: 2,
+            BookId: id
+        }
+
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.ChangeStateReservation), "Book")',
+                data: model
+            })
+            .then(
+                () => {
+                    window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
+                }
+            )
+    }
+
+    function borrowBook(id) {
+        var model = {
+            UserId: 2,
+            BookId: id
+        }
+
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.BorrowBook), "Book")',
+                data: model
+            })
+            .then(
+                () => {
+                    window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
+                }
+            )
     }
 </script>
