@@ -1,15 +1,17 @@
-﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+﻿@model AddAuthorViewModel
+
+<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-pt-8 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAWANIE NOWEGO AUTORA</span>
     </div>
-    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
+    <form asp-controller="Book" asp-action="AddAuthor" data-method="POST" id="LofinForm" asp-antiforgery="false">
         <div class="row lib-p-3">
             <div class="col lib-m-8">
                 <div class="row lib-mb-6">
-                    <input id="AuthorFirstNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
+                    <input id="AuthorFirstNameForm" name="FirstName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="AuthorLastNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
+                    <input id="AuthorLastNameForm" name="LastName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
                 </div>
             </div>
         </div>

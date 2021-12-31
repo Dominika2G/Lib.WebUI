@@ -1,30 +1,72 @@
-﻿<div class="lib-mb-5 lib-mt-5 lib-white-user-card w-100 lib-mb-5">
+﻿@model UserDetail
+<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
     <div class="row lib-p-3">
         <div class="col-auto">
             <img src="~/img/userI.png" style="width:100px; height: 100px;" />
         </div>
         <div class="col">
             <div class="row lib-mt-1">
-                <span class="lib-content-medium-l">Jan Kowalski</span>
+                <span class="lib-content-medium-l">@Model.FirstName @Model.LastName</span>
             </div>
             <div class="row">
-                <span class="lib-content-regular-m">Uczeń</span>
+                @if (Model.RoleName == "User")
+                {
+                    <span class="lib-content-regular-m">
+                        Użytkownik
+                    </span>
+                }
+                else
+                {
+                    <span class="lib-content-regular-m">
+                        @Model.RoleName
+                    </span>
+                }
             </div>
             <div class="row ">
-                <span class="lib-content-regular-s">Klasa 1a</span>
+                <span class="lib-content-regular-s">Klasa @Model.Class</span>
             </div>
         </div>
         <div class="col-auto">
             <div class="row justify-content-end ">
                 <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Zarządzaj</button>
+                    @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" onclick="edit(@Model.UserId)">Zarządzaj</button>*@
+                    <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.EditUser), "User", new { id = @Model.UserId })'>Zarządzaj</a>
                 </div>
             </div>
             <div class="row justify-content-end">
                 <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>
+                    @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>*@
+                    <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.GetUserBooks), "User", new { id = @Model.UserId })'>Statystyki</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    //const editCardUrl = '@Url.Action(nameof(UserController.EditUser), "User")';
+    function edit(UserId) {
+        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User", new { id = "ID" })'.replace("ID", UserId);
+    }
+    function editUser(id) {
+        var model = {
+            id: id
+        }
+        @*httpClient
+            .post({
+                url: '@Url.Action(nameof(UserController.EditUser), "User")'
+            });*@
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action(nameof(UserController.EditUser), "User")',
+            data: model,
+            success: {
+            }
+
+
+        });
+    };
+
+    function edit() {
+        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User")';
+    }
+</script>

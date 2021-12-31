@@ -1,10 +1,15 @@
 ﻿import './core.scss';
+import '../http-client/http-client.js';
 
 window.extensionCore = (() => {
     const init = () => {
         removeConstScript();
         removePartialScript();
     };
+
+    const redirectToLink = (link) => {
+        window.location.href = link;
+    }
 
     const removeConstScript = () => {
         $("#ConstScriptElements").remove();
@@ -27,7 +32,8 @@ window.extensionCore = (() => {
     return {
         init,
         removePartialScript,
-        getHash
+        getHash,
+        redirectToLink
     };
 })();
 

@@ -1,36 +1,43 @@
-﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+﻿@model AddBookViewModel
+<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-pt-8 lib-pb-4 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">DODAWANIE NOWEJ KSIĄŻKI</span>
     </div>
-    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
+    <form asp-controller="Book" asp-action="AddBook" data-method="POST" id="LofinForm" asp-antiforgery="false">
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookTitleForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Tytuł" type="text" />
+                    <input id="BookTitleForm" name="Title" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Tytuł" type="text" />
                 </div>
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookAuthorForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Author" type="text" />
+                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="AuthorId" aria-label="">
+                        <option class="lib-content-medium-l lib-text-gray-500" selected>Author</option>
+                        @foreach (var author in Model.Authors)
+                        {
+                            <option class="lib-content-medium-l lib-text-gray-500" value="@author.AuthorId">@author.FirstName @author.LastName</option>
+                        }
+                    </select>
                 </div>
             </div>
         </div>
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <textarea id="DescriptionForm" name="UserName" class="lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3" placeholder="Opis książki" type="text"></textarea>
+                    <textarea id="DescriptionForm" name="Description" class="lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3" placeholder="Opis książki" type="text"></textarea>
                 </div>
             </div>
         </div>
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookCoverForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Dodaj okładkę" type="text" />
+                    <input id="BookCoverForm" name="Cover" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Dodaj okładkę" type="text" />
                 </div>
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookCodeForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Przypisz kod" type="text" />
+                    <input id="BookCodeForm" name="BarCode" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Przypisz kod" type="text" />
                 </div>
             </div>
         </div>

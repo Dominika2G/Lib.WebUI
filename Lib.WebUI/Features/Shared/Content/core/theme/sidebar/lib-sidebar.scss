@@ -1,20 +1,5 @@
 ﻿@import '../../variables/colors.scss';
 
-/*.sidebar {
-    height: calc(100% - 67px);
-    width: 250px;
-    //position: absolute;
-    position: fixed;
-    background-color: $blue-gray-800;
-    top: 67px;
-
-    div {
-        padding: 8px;
-        font-size: 24px;
-        display: block;
-    }
-}*/
-
 .sidebar {
     height: calc(100% - 67px);
     width: 250px;
@@ -41,7 +26,7 @@
     } 
 
     .dropdown-container {
-        display: none;
+        display: block;
     }
 
     .active {

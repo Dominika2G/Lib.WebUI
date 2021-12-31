@@ -19,7 +19,7 @@
             </div>
             <div class="row justify-content-end">
                 <div class="text-center lib-p-2">
-                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Opis</button>
+                    <button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" onclick="bookdetails()">Opis</button>
                 </div>
                 <div class="text-center lib-p-2">
                     <button class="btn lib-simple-btn lib-content-regular-m lib-w-25">Rezerwuj</button>
@@ -28,3 +28,11 @@
         </div>
     </div>
 </div>
+<script>
+    function bookdetails() {
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.BookDetails), "Book")'
+            });
+    }
+</script>

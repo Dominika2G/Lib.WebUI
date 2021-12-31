@@ -1,0 +1,32 @@
+﻿<div class="row lib-mt-11">
+    <div class="lib-white-card lib-mr-15">
+        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
+            AKTUALNY STAN BIBLIOTEKI
+        </div>
+        <canvas class="lib-p-10" id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="lib-white-card">
+        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
+            POZYCJA DO UZGODNIENIA
+        </div>
+        <canvas class="lib-p-10" id="myChart2" width="400" height="400"></canvas>
+    </div>
+</div>
+<div class="row lib-mt-11 lib-pb-11">
+    <div class="lib-white-card lib-mr-15">
+        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
+            MIESIĘCZNA STATYSTYKA WYPOŻYCZEŃ
+        </div>
+        <canvas class="lib-p-10" id="myLineChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+
+@section BundleScripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js" integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "statistics")
+}
+
+@section BundleStyles {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedStylesPartialView, "statistics")
+}

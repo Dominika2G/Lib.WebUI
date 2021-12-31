@@ -1,35 +1,41 @@
-﻿<div class="lib-mb-5 lib-mt-25 lib-white-card w-50">
+﻿@model EditUserViewModel
+
+<div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-pt-8 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">ZARZĄDZAJ UŻYTKOWNIKEIM</span>
     </div>
-    <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
-        <div class="row lib-p-3">
-            <div class="col lib-m-8">
+    <form asp-controller="User" asp-action="Edit" data-method="POST" id="EditUserFormForm" asp-antiforgery="false">
+        <div class="row lib-p-7">
+            <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
+                    <input id="UserNameForm" name="FirstName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
+                    <input id="UserNameForm" name="LastName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
+                    <input id="UserNameForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
+                    <input id="UserNameForm" name="ConfirmPassword" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
                 </div>
             </div>
-            <div class="col lib-m-8">
+            <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
+                    <input id="UserNameForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Rola" type="text" />
+                    <input id="UserNameForm" name="Class" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
+                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="IsActive" aria-label="">
+                        <option class="lib-content-medium-l lib-text-gray-500" selected>Aktywnosć konta</option>
+                        <option class="lib-content-medium-l lib-text-gray-500" value="true">Aktywny</option>
+                        <option class="lib-content-medium-l lib-text-gray-500" value="false">Nieaktywny</option>
+                    </select>
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="UserName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Wychowawca" type="text" />
+                    <input id="UserId" name="UserId" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="number" value="@Model.UserId" hidden/>
                 </div>
             </div>
         </div>

@@ -5,14 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BarcodeLib" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Shared\Content\core\theme\NewFolder\" />
-    <Folder Include="Features\Statistics\" />
-    <Folder Include="Features\User\Models\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\lib\chart\" />
   </ItemGroup>
 
 </Project>

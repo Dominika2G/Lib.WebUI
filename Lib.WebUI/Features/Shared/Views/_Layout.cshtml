@@ -14,18 +14,19 @@
 <body>
     <header>
         <div class="lib-main-sidenav lib-bg-gray-50">
-            <nav id="MainNavBar" class="navbar navbar-expand-sm lib-pt-3">
-                <div class="navbar-brand lib-pl-5 lib-pt-2">
-                    Library
+            <nav id="MainNavBar" class="navbar navbar-expand-sm lib-pt-2">
+                <div class="navbar-brand lib-pl-5">
+                    <img src="~/img/Other/logo.svg" />
+                    <span class="lib-content-bold-s">TWOJA BIBLIOTEKA</span>
                 </div>
                 <div class="collapse navbar-collapse" id="NavbarItems">
-                    <div class="d-inline-block lib-menu">
+                    <div class="d-inline-block lib-menu lib-pt-2">
                         <div class="lib-menu-item lib-pr-3">
-                            <span class="lib-content-regular-l lib-text-gray-800">Dominika Góralczyk</span>
+                            <span class="lib-content-semibold-m lib-text-gray-800">Dominika Góralczyk</span>
                         </div>
                         <div class="lib-menu-item lib-pr-6">
                             <button class="btn lib-button-header-light lib-w-10 lib-mb-2" href="#">
-                                <img src="~/img/Other/lib-logout.svg" />
+                                <img src="~/img/Other/lib-logout2.svg" />
                             </button>
                         </div>
                     </div>
@@ -34,27 +35,29 @@
         </div>
     </header>
     <div class="sidebar">
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-mt-10 lib-h-14">
+        <button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-mt-10 lib-h-14">
             Książki
         </button>
         <div class="dropdown-container lib-mt-3">
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Dodaj autora</a>
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">2. Dodaj książkę</a>
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">3. Generuj kody</a>
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">4. Znajdź książkę</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.AddAuthor), "Book")">Dodaj autora</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.AddBook), "Book")">Dodaj książkę</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.GenerateCode), "Book")">Generuj kody</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.Index), "Book")">Znajdź książkę</a>
         </div>
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
-            Uzytkownicy
+        <button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-h-14">
+            Użytkownicy
         </button>
         <div class="dropdown-container lib-mt-3">
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Dodaj użytkownika</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.Index), "User")">Podgląd użytkowników</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.AddUser), "User")">Dodaj użytkownika</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.ChangePassword), "User")">Zmień hasło</a>
         </div>
-        <button class="dropdown-btn lib-content-medium-xl lib-text-blue-gray-50 lib-h-14">
+        <button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-h-14">
             Statystyki
         </button>
         <div class="dropdown-container lib-mt-3">
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">1. Wszystkie książki</a>
-            <a class="lib-content-medium-l lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">2. Wypożyczone ksiażki</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.Index), "Statistics")">Wszystkie książki</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">Wypożyczone ksiażki</a>
         </div>
     </div>
     <div class="lib-content-container">
@@ -62,22 +65,6 @@
             @RenderBody()
         </main>
     </div>
-    <script>
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
