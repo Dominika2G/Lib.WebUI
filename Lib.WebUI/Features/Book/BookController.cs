@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,10 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                
+                var cookies = Request.Cookies["Bearer"];
+                /*client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTY0MDk2Mjc3NywiZXhwIjoxNjQxMDQ5MTc3LCJpYXQiOjE2NDA5NjI3Nzd9.HQmUbwhszRqls3BDe7UrsmGl2kc_ToSLJQvHHhGFd-0");*/
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
                 HttpResponseMessage res = await client.GetAsync("Book/AllBooks");
 
                 if (res.IsSuccessStatusCode)
