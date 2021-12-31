@@ -15,5 +15,6 @@ namespace Lib.WebUI.Features.Book.Models
         public bool IsAvailable { get; set; }
         public bool IsReserved { get; set; }
         public List<Author> Authors { get; set; }
+        public byte[] Image { get; set; }
     }
 }

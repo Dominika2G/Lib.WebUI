@@ -22,14 +22,11 @@ namespace Lib.WebUI.Features.Auth
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginFormViewModel model)
         {
-            /*return RedirectToAction(nameof(HomeController.Index), "Home");*/
             string baseUrl = "https://localhost:44380/";
             using(var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //HttpResponseMessage Res = await client.GetAsync("WeatherForecast");
                 var content = new {
                     Email = model.Email,
                     Password = model.Password
