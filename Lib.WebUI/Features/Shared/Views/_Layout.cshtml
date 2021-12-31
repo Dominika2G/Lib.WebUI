@@ -56,8 +56,8 @@
             Statystyki
         </button>
         <div class="dropdown-container lib-mt-3">
-            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.Index), "Statistics")">Wszystkie książki</a>
-            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="#">Wypożyczone ksiażki</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.Index), "Statistics")">Podstawowe statystyki</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.GetBooksStatistics), "Statistics")">Lista książek</a>
         </div>
     </div>
     <div class="lib-content-container">
