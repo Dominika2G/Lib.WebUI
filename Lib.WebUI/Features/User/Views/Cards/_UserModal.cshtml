@@ -28,14 +28,11 @@
                         </div>
                     </div>
                     <div class="row justify-content-end">
-                        @*                    <div class="text-center lib-p-2">
-                                <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
-                            </div>*@
                         <div class="text-center lib-p-2">
                             <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
                         </div>
                         <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
                         </div>
                     </div>
                 </div>
@@ -45,12 +42,12 @@
                 <div class="col-auto">
                     <div class="row justify-content-end ">
                         <div class="lib-p-2">
-                            <span class="lib-disabled-card lib-content-semibold-s lib-w-30">WYPOŻYCZONA</span>
+                            <span class="lib-disabled-card lib-content-semibold-s lib-w-35">WYPOŻYCZONA</span>
                         </div>
                     </div>
                     <div class="row justify-content-end">
                         <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-35" onclick="returnBook(@book.BookId)">Zwróć</button>
                         </div>
                     </div>
                 </div>

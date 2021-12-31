@@ -1,7 +1,7 @@
 ﻿@model BookViewModel
 <div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
-    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." />
-    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; ">
+    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue"/>
+    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="searchBooks()"  id="BooksearchButton">
         <img src="~/img/Other/lib-search.svg" />
     </button>
 </div>
@@ -83,22 +83,25 @@
             </div>
 }
 <script>
-@*    async function showDetails(id) {
+    function searchBooks() {
+        var currentValue = $("#SearchValue").val();
+
         var model = {
-            id: id
-        };
-        //window.location.href = '@Url.Action(nameof(BookController.BookDetails), "Book")';
-        $.ajax({
-            type: "GET",
-            url: '@Url.Action(nameof(BookController.BookDetails), "Book")',
-            data: model,
-            success: {
-            }
+            data: currentValue
+        }
 
+        httpClient
+            .get({
+                url: '@Url.Action(nameof(BookController.Search), "Book")',
+                data: model
+            })
+            .then(
+                (result) => {
+                    window.location.href = '@Url.Action(nameof(BookController.SearchBook), "Book", new { data = "DATA" })'.replace("DATA", result);
+                }
+            )
 
-        });
-    }*@
-
+    }
     function bookReservation(id) {
         var model = {
             UserId: 2,

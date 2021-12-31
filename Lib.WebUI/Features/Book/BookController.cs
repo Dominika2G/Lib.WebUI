@@ -1,8 +1,12 @@
-﻿using Lib.WebUI.Features.Book.Models;
+﻿using BarcodeLib;
+using Lib.WebUI.Features.Book.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -109,7 +113,6 @@ namespace Lib.WebUI.Controllers
                     Title = model.Title,
                     Description = model.Description,
                     AuthorId = model.AuthorId,
-                    //AuthorId = 1,
                     Cover = "",
                     BarCode = model.BarCode,
                     IsAvailable = true,
@@ -244,8 +247,13 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        /*[HttpGet]
-        public async Task<IActionResult> GetUserBooks()
+        public string Search(string data)
+        {
+            return data;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchBook(string data)
         {
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
@@ -253,19 +261,62 @@ namespace Lib.WebUI.Controllers
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
 
-                HttpResponseMessage res = await client.GetAsync("Book/GetUserBooks");
+                HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetSelectedBook?TitleOrBarCode={0}", data));
 
                 if (res.IsSuccessStatusCode)
                 {
-                    var bookCollection = await res.Content.ReadAsAsync<List<UserBooks>>();
-                    var model = new UserBooksViewModel()
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
+                    var model = new BookViewModel()
                     {
-                        Books = bookCollection
+                        BookDetails = books.BookDetails
                     };
-                    return View("Cards/_UserModal", model);
+                    return View("Books", model);
                 }
             }
-            return RedirectToAction(nameof(BookController.Index), "Book");
-        }*/
+            return View("Books");
+        }
+
+        public IActionResult GenerateBarCode()
+        {
+            Barcode barcode = new Barcode();
+            Image img = barcode.Encode(TYPE.CODE39, "256987", Color.Black, Color.White, 250, 100);
+            var data = ConvertImageToBytes(img);
+            
+            return File(data, "image/jpeg");
+        }
+
+        private byte[] ConvertImageToBytes(Image img)
+        {
+            using(MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+        public IActionResult BarCode()
+        {
+            var barcode = "123456789";
+            //Image barcodeImage = new Image();
+            using(Bitmap bitMap = new Bitmap(barcode.Length * 40, 80))
+            {
+                using(Graphics graphics = Graphics.FromImage(bitMap))
+                {
+                    Font ofont = new Font("IDAutomationC39M", 16);
+                    PointF point = new PointF(2f, 2f);
+                    SolidBrush blackBrush = new SolidBrush(Color.Black);
+                    SolidBrush whiteBrush = new SolidBrush(Color.White);
+                    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
+                    graphics.DrawString("*" + barcode + "*", ofont, blackBrush, point);
+                }
+                using(MemoryStream ms = new MemoryStream())
+                {
+                    bitMap.Save(ms, ImageFormat.Png);
+                    var BarCodeImage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                    return File(ms.ToString(), "image/png");
+                }
+            }
+            //return View();
+        }
     }
 }

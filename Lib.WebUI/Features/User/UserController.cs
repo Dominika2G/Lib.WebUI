@@ -145,5 +145,37 @@ namespace Lib.WebUI.Controllers
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
+
+        public IActionResult ChangePassword()
+        {
+            return View("Cards/_ChangePassword", new ChangePasswordRequest());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var content = new
+                {
+                    Email = model.Email,
+                    OldPassword = model.Password,
+                    NewPassword = model.ConfirmPassword
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Auth/changePassword", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                }
+
+            }
+
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
     }
 }
