@@ -6,9 +6,13 @@
     <partial name="Cards/_BookDetails" model="Model" />
 </div>
 <div class="row lib-mx-35">
-    @for (int i = 0; i < 5; i++)
+    @*@for (int i = 0; i < 5; i++)
+        {
+            <partial name="Cards/_CommentCard" />
+        }*@
+    @foreach (var comment in Model.CommentList)
     {
-        <partial name="Cards/_CommentCard" />
+        <partial name="Cards/_CommentCard" model="comment"/>
     }
 </div>
 <div class="row">
@@ -19,10 +23,10 @@
         <label for="CommentForm" class="lib-content-medium-l lib-text-geay-800 lib-pl-10">
             Dodaj komentarz
         </label>
-        <input id="CommentForm" class="lib-comment-textbox ib-content-medium-m lib-text-gray-600" />
+        <input id="CommentForm" name="CommentForm" class="lib-comment-textbox ib-content-medium-m lib-text-gray-600" />
 
     </div>
-    <select class="col-1 lib-mt-8 lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="AuthorId" aria-label="">
+    <select class="col-1 lib-mt-8 lib-select form-select lib-content-medium-l lib-text-gray-500" id="RatingId" name="RatingId" aria-label="">
         <option class="lib-content-medium-l lib-text-gray-500" selected>Ocena</option>
         @for (var i = 1; i < 6; i++)
         {
@@ -30,12 +34,34 @@
         }
     </select>
     <div class="col-2 lib-p-8">
-        <button class="btn lib-dark-btn lib-content-semibold-m lib-h-12 lib-w-30">
+        <button class="btn lib-dark-btn lib-content-semibold-m lib-h-12 lib-w-30" onclick="addComment(@Model.BookDetails.BookId)">
             WYŚLIJ
         </button>
     </div>
 </div>
 <script>
+    function addComment(id) {
+        var comment = $("#CommentForm").val();
+        var rating = $("#RatingId").val();
+        var model = {
+            description: comment,
+            rating: rating,
+            bookId: id
+        }
+
+        httpClient
+            .post({
+                url: '@Url.Action(nameof(BookController.AddComment), "Book")',
+                data: model
+            })
+            .then(
+                () => {
+                    //window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
+                    location.reload();
+                }
+            )
+    }
+
     function back() {
         window.location.href = '@Url.Action(nameof(BookController.Index), "Book")'
     }

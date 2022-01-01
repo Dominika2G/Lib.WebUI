@@ -301,6 +301,33 @@ namespace Lib.WebUI.Controllers
             return View("Books");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddComment(AddCommentRequest model)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+                var content = new
+                {
+                    Description = model.Description,
+                    Rating = model.Rating,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/AddComment", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
         public IActionResult GenerateBarCode()
         {
             Barcode barcode = new Barcode();

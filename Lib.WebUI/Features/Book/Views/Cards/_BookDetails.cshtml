@@ -7,13 +7,13 @@
         </div>
         <div class="col lib-pr-5">
             <div class="row lib-mt-1">
-                <span class="lib-content-semibold-xl lib-text-gray-800">@Model.AuthorFirstName @Model.AuthorLastName</span>
+                <span class="lib-content-semibold-xl lib-text-gray-800">@Model.BookDetails.AuthorFirstName @Model.BookDetails.AuthorLastName</span>
             </div>
             <div class="row">
-                <span class="lib-content-semibold-l lib-text-gray-600 lib-mt-2">@Model.Title</span>
+                <span class="lib-content-semibold-l lib-text-gray-600 lib-mt-2">@Model.BookDetails.Title</span>
             </div>
             <div class="row text-left lib-mt-2 lib-mt-2">
-                <span class="lib-content-regular-m">@Model.Description</span>
+                <span class="lib-content-regular-m">@Model.BookDetails.Description</span>
             </div>
             <div class="row justify-content-end lib-mt-3">
                 <span class="lib-content-medium-m lib-text-gray-600">Rozwiń opis <img class="lib-mb-1" src="~/img/Other/lib-arrow-down.svg" /></span>
