@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Auth/GetUsers");
 
@@ -50,6 +53,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     FirstName = model.FirstName,
@@ -73,10 +78,6 @@ namespace Lib.WebUI.Controllers
                 return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        /*public IActionResult EditUser()
-        {
-            return View("Cards/_EditUser", model);
-        }*/
         public IActionResult EditUser(long id)
         {
             var model = new EditUserViewModel()
@@ -93,6 +94,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -108,7 +111,6 @@ namespace Lib.WebUI.Controllers
 
                 if (res.IsSuccessStatusCode)
                 {
-                    //var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     return RedirectToAction(nameof(UserController.Index), "User");
                 }
             }
@@ -130,6 +132,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetUserBooks?Id={0}", id));
 
@@ -159,9 +163,10 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
-                    Email = model.Email,
                     OldPassword = model.Password,
                     NewPassword = model.ConfirmPassword
                 };

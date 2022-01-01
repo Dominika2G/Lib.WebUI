@@ -1,4 +1,5 @@
 ﻿using BarcodeLib;
+using Lib.WebUI.Features.Auth;
 using Lib.WebUI.Features.Book.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -25,7 +26,6 @@ namespace Lib.WebUI.Controllers
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
                 var cookies = Request.Cookies["Bearer"];
-                /*client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTY0MDk2Mjc3NywiZXhwIjoxNjQxMDQ5MTc3LCJpYXQiOjE2NDA5NjI3Nzd9.HQmUbwhszRqls3BDe7UrsmGl2kc_ToSLJQvHHhGFd-0");*/
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Book/AllBooks");
@@ -34,6 +34,7 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
+                    //var userId = User.Claims.First(x => x.Type == "UserID");
                     var model = new BookViewModel()
                     {
                         BookDetails = books.BookDetails
@@ -41,7 +42,8 @@ namespace Lib.WebUI.Controllers
                     return View("Books", model);
                 }
             }
-            return View("Books");
+            //return View("Books");
+            return RedirectToAction(nameof(AuthController.Index), "Auth");
         }
 
         public IActionResult AddAuthor()
@@ -57,6 +59,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     FirstName = model.FirstName,
@@ -85,6 +89,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Book/GetAuthors");
 
@@ -112,6 +118,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     Title = model.Title,
@@ -141,6 +149,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/BookDetail?Id={0}", id));
 
@@ -163,6 +173,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -187,6 +199,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -211,6 +225,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -235,6 +251,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -264,6 +282,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetSelectedBook?TitleOrBarCode={0}", data));
 

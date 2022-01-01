@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Lib.WebUI.Controllers
@@ -18,6 +19,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Book/GetStatistics");
 
@@ -42,6 +45,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Book/GetStatistics");
 
@@ -64,6 +69,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Auth/getUsersStatistics");
 
@@ -87,6 +94,8 @@ namespace Lib.WebUI.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetBooksinformation", id));
 

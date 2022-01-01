@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Claims;
+
 
 namespace Lib.WebUI.Features.Auth
 {
@@ -28,7 +30,7 @@ namespace Lib.WebUI.Features.Auth
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTY0MDk2Mjc3NywiZXhwIjoxNjQxMDQ5MTc3LCJpYXQiOjE2NDA5NjI3Nzd9.HQmUbwhszRqls3BDe7UrsmGl2kc_ToSLJQvHHhGFd-0");
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTY0MDk2Mjc3NywiZXhwIjoxNjQxMDQ5MTc3LCJpYXQiOjE2NDA5NjI3Nzd9.HQmUbwhszRqls3BDe7UrsmGl2kc_ToSLJQvHHhGFd-0");
                 var content = new {
                     Email = model.Email,
                     Password = model.Password
@@ -41,11 +43,15 @@ namespace Lib.WebUI.Features.Auth
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     AccessToken token = JsonConvert.DeserializeObject<AccessToken>(EmpResponse);
                     var key = "Bearer";
+                    var UserId = "UserID";
+                    var RoleId = "RoleID";
                     CookieOptions options = new CookieOptions
                     {
                         Expires = DateTime.Now.AddMinutes(10)
                     };
                     Response.Cookies.Append(key, token.Token, options);
+                    Response.Cookies.Append(UserId, token.UserID);
+                    Response.Cookies.Append(RoleId, token.RoleID);
                 }
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
