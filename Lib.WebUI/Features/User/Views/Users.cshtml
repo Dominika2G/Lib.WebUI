@@ -7,14 +7,6 @@
     </button>
 </div>
 <div class="row">
-
-@*    @for (int x = 0; x < 10; x++)
-    {
-        <div class="col-6 d-flex">
-            <partial name="Cards/_Card" />
-        </div>
-    }*@
-
     @foreach (var user in Model.UsersCollection)
     {
         <div class="col-6 d-flex">

@@ -1,7 +1,7 @@
 ﻿@model BookViewModel
 <div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
-    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue"/>
-    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="searchBooks()"  id="BooksearchButton">
+    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue" />
+    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="searchBooks()" id="BooksearchButton">
         <img src="~/img/Other/lib-search.svg" />
     </button>
 </div>
@@ -60,28 +60,29 @@
                         <div class="text-center lib-p-2">
                             <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
-                        @if(book.IsAvailable)
+                        @if (book.IsAvailable)
                         {
                             <div class="text-center lib-p-2">
                                 <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="bookReservation(@book.BookId)">Rezerwuj</button>
-                            </div>
+                           </div>
                         }
-                        <div class="text-center lib-p-2">
-                            @if (book.IsAvailable)
-                            {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="borrowBook(@book.BookId)">Wypożycz</button>
-                            }
-                            else
-                            {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
-                            }
-                        </div>
+                    <div class="text-center lib-p-2">
+                        @if (book.IsAvailable)
+                        {
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30" href='@Url.Action(nameof(BookController.MakeReservation), "Book", new { id = book.BookId })'>Wypożycz</a>
+                        }
+                        else
+                        {
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
+                        }
+                    </div>
                     </div>
                 </div>
             }
         </div>
-            </div>
+    </div>
 }
+
 <script>
     function searchBooks() {
         var currentValue = $("#SearchValue").val();
@@ -104,7 +105,7 @@
     }
     function bookReservation(id) {
         var model = {
-            UserId: 2,
+            UserId: 0,
             BookId: id
         }
 
@@ -122,7 +123,6 @@
 
     function returnBook(id) {
         var model = {
-            UserId: 2,
             BookId: id
         }
 
@@ -156,7 +156,7 @@
             )
     }
 
-    function borrowBook(id) {
+    @*function borrowBook(id) {
         var model = {
             UserId: 2,
             BookId: id
@@ -172,5 +172,5 @@
                     window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
                 }
             )
-    }
+    }*@
 </script>
