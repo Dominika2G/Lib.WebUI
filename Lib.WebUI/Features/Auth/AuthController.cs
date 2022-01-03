@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 
 
-namespace Lib.WebUI.Features.Auth
+//namespace Lib.WebUI.Features.Auth
+namespace Lib.WebUI.Controllers
 {
     public class AuthController : Controller
     {
@@ -55,6 +56,15 @@ namespace Lib.WebUI.Features.Auth
                 }
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        public IActionResult LogOut()
+        {
+            Response.Cookies.Delete("Bearer");
+            Response.Cookies.Delete("UserID");
+            Response.Cookies.Delete("RoleID");
+
+            return RedirectToAction(nameof(AuthController.Index), "Auth");
         }
 
     }
