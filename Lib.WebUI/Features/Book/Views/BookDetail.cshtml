@@ -6,10 +6,6 @@
     <partial name="Cards/_BookDetails" model="Model" />
 </div>
 <div class="row lib-mx-35">
-    @*@for (int i = 0; i < 5; i++)
-        {
-            <partial name="Cards/_CommentCard" />
-        }*@
     @foreach (var comment in Model.CommentList)
     {
         <partial name="Cards/_CommentCard" model="comment"/>

@@ -9,6 +9,7 @@ namespace Lib.WebUI.Features.Book.Models
     {
         public PartialBookInformation BookDetails { get; set; }
         public List<CommentDetail> CommentList { get; set; }
+        public float Rating { get; set; }
 
     }
 }

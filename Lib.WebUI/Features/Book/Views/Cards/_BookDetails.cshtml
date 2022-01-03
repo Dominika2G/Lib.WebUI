@@ -21,7 +21,14 @@
         </div>
         <div class="col-1">
             <div class="row justify-content-end">
-                <span class="lib-content-medium-m lib-w-25">Ocena: 7.5</span>
+                @if (Model.Rating > 0)
+                {
+                    <span class="lib-content-medium-m lib-w-25">Ocena: @Model.Rating</span>
+                }
+                else
+                {
+                    <span class="lib-content-medium-m lib-w-25">Brak ocen</span>
+                }
             </div>
         </div>
     </div>

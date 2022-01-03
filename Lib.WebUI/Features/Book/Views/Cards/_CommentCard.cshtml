@@ -1,31 +1,34 @@
 ﻿@model CommentDetail
 
-<div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
-    <div class="row lib-p-3">
-        <div class="col-auto">
-             <img src="~/img/user3.png" style="width:50px; height: 50px;" />
-        </div>
-        <div class="col">
-            <div class="row lib-mt-1">
-                <div class="col text-left">
-                    <span class="lib-content-medium-l lib-text-gray-900">
-                        @Model.Email
-                    </span>
-                    <span class="lib-content-medium-l lib-text-gray-900">
-                        @Model.AddingDate
-                    </span>
-                </div>
-                <div class="col text-right">
-                    <span class="lib-content-medium-l lib-text-gray-900">Ocena: @Model.Rating</span>
-                </div>
+@if (Model != null)
+{
+    <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
+        <div class="row lib-p-3">
+            <div class="col-auto">
+                <img src="~/img/user3.png" style="width:50px; height: 50px;" />
             </div>
-            <div class="row text-left">
-                <div class="lib-comment-card w-100 lib-mx-3 lib-mt-3 text-left">
-                    <span class="lib-content-medium-m lib-text-gray-600">
-                        @Model.Description
-                    </span>
+            <div class="col">
+                <div class="row lib-mt-1">
+                    <div class="col text-left">
+                        <span class="lib-content-medium-l lib-text-gray-900">
+                            @Model.Email
+                        </span>
+                        <span class="lib-content-medium-l lib-text-gray-900">
+                            @Model.AddingDate
+                        </span>
+                    </div>
+                    <div class="col text-right">
+                        <span class="lib-content-medium-l lib-text-gray-900">Ocena: @Model.Rating</span>
+                    </div>
+                </div>
+                <div class="row text-left">
+                    <div class="lib-comment-card w-100 lib-mx-3 lib-mt-3 text-left">
+                        <span class="lib-content-medium-m lib-text-gray-600">
+                            @Model.Description
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
