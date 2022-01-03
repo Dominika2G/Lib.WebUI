@@ -82,11 +82,17 @@ namespace Lib.WebUI.Controllers
                 return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        public IActionResult EditUser(long id)
+        public IActionResult EditUser(long id, string firstName, string lastName, string email, string clas, int active)
         {
+            var isActive = active == 1 ? true : false;
             var model = new EditUserViewModel()
             {
-                UserId = id
+                UserId = id,
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                Class = clas,
+                IsActive = isActive
             };
             return View("Cards/_EditUser", model);
         }

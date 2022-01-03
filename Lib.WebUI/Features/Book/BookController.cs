@@ -363,6 +363,34 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> BorrowBook(Bookstatusrequest model)
         {
+            if (!ModelState.IsValid)
+            {
+                string baseUrl2 = "https://localhost:44380/";
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl2);
+                    client.DefaultRequestHeaders.Clear();
+                    var cookies = Request.Cookies["Bearer"];
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                    HttpResponseMessage res = await client.GetAsync("Auth/getUsers");
+
+                    if (res.IsSuccessStatusCode)
+                    {
+                        var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                        UserCollectionViewModel x = await res.Content.ReadAsAsync<UserCollectionViewModel>();
+                        var model2 = new MakeReservationViewModel()
+                        {
+                            UsersCollection = x.UsersCollection,
+                            BookId = model.BookId
+                        };
+
+
+                        return View("Cards/_borrowBook", model2);
+                    }
+                }
+               // return View("Cards/_borrowBook", model);
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {

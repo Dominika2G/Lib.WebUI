@@ -68,7 +68,7 @@
         window.location.href = '@Url.Action(nameof(UserController.Index), "User")';
     }
 
-    function bookReservation(id) {
+    @*function bookReservation(id) {
         var model = {
             UserId: 2,
             BookId: id
@@ -81,10 +81,11 @@
             })
             .then(
                 () => {
-                    window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    //window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    location.reload();
                 }
             )
-    }
+    }*@
 
     function returnBook(id) {
         var model = {
@@ -99,7 +100,8 @@
             })
             .then(
                 () => {
-                    window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    //window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    location.reload();
                 }
             )
     }
@@ -117,12 +119,13 @@
             })
             .then(
                 () => {
-                    window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    //window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
+                    location.reload();
                 }
             )
     }
 
-    function borrowBook(id) {
+    @*function borrowBook(id) {
         var model = {
             UserId: 2,
             BookId: id
@@ -138,5 +141,5 @@
                     window.location.href = '@Url.Action(nameof(UserController.GetUserBooks), "User")';
                 }
             )
-    }
+    }*@
 </script>
