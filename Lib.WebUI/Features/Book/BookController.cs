@@ -119,6 +119,29 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook(AddBookViewModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                string baseUrl2 = "https://localhost:44380/";
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl2);
+                    client.DefaultRequestHeaders.Clear();
+                    var cookies = Request.Cookies["Bearer"];
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                    HttpResponseMessage res = await client.GetAsync("Book/GetAuthors");
+
+                    if (res.IsSuccessStatusCode)
+                    {
+                        var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                        List<Author> x = await res.Content.ReadAsAsync<List<Author>>();
+                        model.Authors = x;
+                        return View("Cards/_AddBook", model);
+                    }
+                }
+            }
+
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {

@@ -48,6 +48,10 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(CreateUserViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Cards/_AddUser", model);
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -63,7 +67,7 @@ namespace Lib.WebUI.Controllers
                     RoleId = model.RoleId,
                     Password = model.Password,
                     ConfirmPassword = model.ConfirmPassword,
-                    Class = model.Class
+                    Class = model.Class == null ? "" : model.Class
                 };
                 StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
                 HttpResponseMessage res = await client.PostAsync("Auth/register", t);
@@ -158,6 +162,10 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Cards/_ChangePassword", model);
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -176,6 +184,11 @@ namespace Lib.WebUI.Controllers
                 if (res.IsSuccessStatusCode)
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    if(EmpResponse == "Podałeś to samo hasło")
+                    {
+                        ViewBag.InvalidOldPassword = "Nowe hasło jest takie samo jak stare hasło";
+                        return View("Cards/_ChangePassword", model);
+                    }
                 }
 
             }

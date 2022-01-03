@@ -11,12 +11,10 @@
         </div>
         <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
             <div class="row lib-mb-10 form-grup">
-                @*<input id="EmailForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500 form-control" placeholder="Nazwa użytkownika" type="text" required />*@
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name="Email", @placeholder = "Nazwa użytkownika" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
             <div class="row lib-mb-6 form-grup">
-                @*<input id="PasswordForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500 form-control" placeholder="Hasło" type="password" data-val-required="" required />*@
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Password", @Type="password", @placeholder = "Hasło" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>

@@ -8,19 +8,23 @@
         <div class="row lib-p-3">
             <div class="col lib-m-8">
                 <div class="row lib-mb-6">
-                    <input name="BookId" value="@Model.BookId" hidden/>
-                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="UserId" aria-label="">
+                    <input name="BookId" value="@Model.BookId" hidden />
+                    @*<select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="UserId" aria-label="">
                         <option class="lib-content-medium-l lib-text-gray-500" selected>Uzytkownik</option>
                         @foreach (var author in Model.UsersCollection)
                         {
                             <option class="lib-content-medium-l lib-text-gray-500" value="@author.UserId">@author.FirstName @author.LastName</option>
                         }
-                    </select>
+                    </select>*@
+                    @Html.DropDownListFor(model => model.UserId, Model.UsersCollection.Select(x => new SelectListItem { Text = x.FirstName + " " + x.LastName, Value = x.UserId.ToString() }),
+                    "Wybierz użytkownika",
+                    new { @class = "lib-select form-select lib-content-medium-l lib-text-gray-500" })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
         <div class="row justify-content-end lib-pr-10 lib-pb-5">
-            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m">WYPOŻYCZ</button>
+            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m lib-w-35">WYPOŻYCZ</button>
         </div>
     </form>
 </div>

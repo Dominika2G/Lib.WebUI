@@ -1,7 +1,7 @@
 ﻿
 .lib-textera {
     box-sizing: border-box;
-    height: 120px;
+    height: 120px !important;
     width: 100%;
     border: none;
     border-radius: $radius-03;
@@ -11,8 +11,7 @@
 
     &.form-control {
         &:focus {
-            background: $blue-gray-100;
-            border: 1.5px solid $blue-gray-700;
+            border: 2px solid $blue-gray-700;
             box-shadow: none;
         }
     }

@@ -8,31 +8,44 @@
         <div class="row lib-p-7">
             <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="FirstName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Imię" type="text" />
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "FirstName", @placeholder = "Imię" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="LastName" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwisko" type="text" />
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "LastName", @placeholder = "Nazwisko" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="text" />
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Password", @placeholder = "Hasło" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="ConfirmPassword" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Powtórz hasło" type="text" />
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "ConfirmPassword", @placeholder = "Potwierdź hasło" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col lib-m-2">
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Email" type="text" />
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Email", @placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    <input id="UserNameForm" name="Class" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="text" />
+                    @Html.EditorFor(model => model.Class, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Class", @placeholder = "Klasa" } })
                 </div>
                 <div class="row lib-mb-6">
-                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="IsActive" aria-label="">
+                    @*<select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="IsActive" aria-label="">
                         <option class="lib-content-medium-l lib-text-gray-500" selected>Aktywnosć konta</option>
                         <option class="lib-content-medium-l lib-text-gray-500" value="true">Aktywny</option>
                         <option class="lib-content-medium-l lib-text-gray-500" value="false">Nieaktywny</option>
-                    </select>
+                    </select>*@
+                    @Html.DropDownListFor(model => model.IsActive, new List<SelectListItem>
+                    {
+                          new SelectListItem { Text = "Aktywny", Value = "true"},
+                          new SelectListItem { Text = "Nieaktywny", Value = "false"}
+                    },
+                    "Wybierz rolę",
+                    new { @class = "lib-select form-select lib-content-medium-l lib-text-gray-500" })
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
                     <input id="UserId" name="UserId" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Klasa" type="number" value="@Model.UserId" hidden/>
