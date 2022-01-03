@@ -19,19 +19,22 @@ namespace Lib.WebUI.Controllers
     {
         public IActionResult Index()
         {
-            //return View();
             return View("Login/Login", new LoginFormViewModel());
         }
 
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginFormViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Login/Login", model);
+            }
             string baseUrl = "https://localhost:44380/";
             using(var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxIiwiUm9sZUlkIjoiMSIsIm5iZiI6MTY0MDk2Mjc3NywiZXhwIjoxNjQxMDQ5MTc3LCJpYXQiOjE2NDA5NjI3Nzd9.HQmUbwhszRqls3BDe7UrsmGl2kc_ToSLJQvHHhGFd-0");
+
                 var content = new {
                     Email = model.Email,
                     Password = model.Password
@@ -43,6 +46,11 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     AccessToken token = JsonConvert.DeserializeObject<AccessToken>(EmpResponse);
+                    if (token.Token == "Brak tokenu")
+                    {
+                        ViewBag.ErrorAuthorize = "*Podano złe dane logowania";
+                        return View("Login/Login", model);
+                    }
                     var key = "Bearer";
                     var UserId = "UserID";
                     var RoleId = "RoleID";

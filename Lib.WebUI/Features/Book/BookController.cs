@@ -55,6 +55,11 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAuthor(AddAuthorViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Cards/_AddAuthor", model);
+            }
+
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
