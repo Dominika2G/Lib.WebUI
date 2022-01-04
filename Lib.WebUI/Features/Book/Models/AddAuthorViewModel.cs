@@ -8,10 +8,10 @@ namespace Lib.WebUI.Features.Book.Models
 {
     public class AddAuthorViewModel
     {
-        [Required(ErrorMessage = "Nie podano imienia artysty")]
+        [Required(ErrorMessage = "*Należy podać imię autora")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Nie podano nazwiska artysty")]
+        [Required(ErrorMessage = "*Należy podać naziwsko autora")]
         public string LastName { get; set; }
     }
 }

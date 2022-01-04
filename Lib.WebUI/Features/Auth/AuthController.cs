@@ -48,7 +48,7 @@ namespace Lib.WebUI.Controllers
                     AccessToken token = JsonConvert.DeserializeObject<AccessToken>(EmpResponse);
                     if (token.Token == "Brak tokenu")
                     {
-                        ViewBag.ErrorAuthorize = "*Podano złe dane logowania";
+                        ViewBag.ErrorAuthorize = "*Podano złe dane logowania lub konto jest nieaktywne. Prosze skontaktować sie z administratorem.";
                         return View("Login/Login", model);
                     }
                     var key = "Bearer";

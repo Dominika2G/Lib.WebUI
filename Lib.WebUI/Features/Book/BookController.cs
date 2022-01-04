@@ -387,10 +387,11 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
-                    var model = new BookViewModel()
+                    var model = new BookAuthenticationViewModel()
                     {
-                        BookDetails = books.BookDetails
-                    };
+                        BookDetails = books.BookDetails,
+                        IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false
+                };
                     return View("Books", model);
                 }
             }

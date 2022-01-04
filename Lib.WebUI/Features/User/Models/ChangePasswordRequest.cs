@@ -8,11 +8,11 @@ namespace Lib.WebUI.Features.User.Models
 {
     public class ChangePasswordRequest
     {
-        [Required(ErrorMessage = "Hasło jest wymagane")]
+        [Required(ErrorMessage = "*Proszę podać starę hasło")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Potworedzenie hasła jest wymagane")]
+        [Required(ErrorMessage = "*Proszę podać nowe hasło")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
     }

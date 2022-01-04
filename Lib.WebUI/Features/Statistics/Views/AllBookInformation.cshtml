@@ -25,12 +25,12 @@
                     <td>@book.AuthorFirstName @book.AuthorLastName</td>
                     <td>@book.Title</td>
                     <td>@book.Email</td>
-                    <td>@book.LoanDate</td>
+                    <td>@book.LoanDate.ToShortDateString()</td>
                     @if (book.ReturnDate == DateTime.Today)
                     {
                         <td>
                             <span class="lib-disabled-card">
-                                @book.ReturnDate
+                                @book.ReturnDate.ToShortDateString()
                             </span>
                         </td>
                     }
