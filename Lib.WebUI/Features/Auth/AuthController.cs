@@ -54,6 +54,7 @@ namespace Lib.WebUI.Controllers
                     var key = "Bearer";
                     var UserId = "UserID";
                     var RoleId = "RoleID";
+                    ViewBag.Role = token.RoleID;
                     CookieOptions options = new CookieOptions
                     {
                         Expires = DateTime.Now.AddMinutes(10)

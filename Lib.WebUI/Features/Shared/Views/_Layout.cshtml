@@ -39,7 +39,6 @@
             Książki
         </button>
         <div class="dropdown-container lib-mt-3">
-
             @if (true)
             {
                 <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.AddAuthor), "Book")">Dodaj autora</a>
@@ -54,6 +53,7 @@
         <div class="dropdown-container lib-mt-3">
             <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.Index), "User")">Podgląd użytkowników</a>
             <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.AddUser), "User")">Dodaj użytkownika</a>
+            <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.GetUserLoginBooks), "User")">Moje książki</a>
             <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.ChangePassword), "User")">Zmień hasło</a>
         </div>
         <button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-h-14">

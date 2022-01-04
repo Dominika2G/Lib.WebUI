@@ -66,9 +66,12 @@ namespace Lib.WebUI
 
             app.UseEndpoints(endpoints =>
             {
+                /*endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Auth}/{action=Index}");*/
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Auth}/{action=Index}");
+                    pattern: "{controller=Book}/{action=Index}");
                 /*endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");*/

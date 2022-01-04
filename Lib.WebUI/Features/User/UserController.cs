@@ -160,6 +160,34 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserLoginBooks(long id)
+        {
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetUserLoginBooks"));
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var bookCollection = await res.Content.ReadAsAsync<List<UserBooks>>();
+                    var model = new UserBooksViewModel()
+                    {
+                        Books = bookCollection
+                    };
+                    return View("Cards/_UserOwnBooks", model);
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+
         public IActionResult ChangePassword()
         {
             return View("Cards/_ChangePassword", new ChangePasswordRequest());

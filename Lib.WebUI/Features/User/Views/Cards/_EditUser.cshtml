@@ -16,11 +16,11 @@
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Password", @placeholder = "Hasło" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Password", @placeholder = "Hasło", @type = "password" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
                 <div class="row lib-mb-6">
-                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "ConfirmPassword", @placeholder = "Potwierdź hasło" } })
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "ConfirmPassword", @placeholder = "Potwierdź hasło", @type = "password" } })
                     @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                 </div>
             </div>
