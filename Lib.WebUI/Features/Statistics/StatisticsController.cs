@@ -14,6 +14,7 @@ namespace Lib.WebUI.Controllers
     {
         public async Task<IActionResult> Index()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -40,6 +41,7 @@ namespace Lib.WebUI.Controllers
 
         public async Task<JsonResult> GetStatistics()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -64,6 +66,7 @@ namespace Lib.WebUI.Controllers
 
         public async Task<JsonResult> GetUserStatistics()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -89,6 +92,7 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBooksStatistics(long id)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {

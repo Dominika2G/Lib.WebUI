@@ -54,6 +54,13 @@ namespace Lib.WebUI.Controllers
                     var key = "Bearer";
                     var UserId = "UserID";
                     var RoleId = "RoleID";
+                    if(token.RoleID == "1")
+                    {
+                        ViewBag.IsAuthenticated = true;
+                    }else
+                    {
+                        ViewBag.IsAuthenticated = false;
+                    }
                     ViewBag.Role = token.RoleID;
                     CookieOptions options = new CookieOptions
                     {
@@ -74,6 +81,18 @@ namespace Lib.WebUI.Controllers
             Response.Cookies.Delete("RoleID");
 
             return RedirectToAction(nameof(AuthController.Index), "Auth");
+        }
+        [HttpGet]
+        public bool IsAuthenticated()
+        {
+            var cookies = Request.Cookies["RoleId"];
+            if(cookies == "1")
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
         }
 
     }

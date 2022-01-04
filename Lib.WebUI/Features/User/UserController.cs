@@ -10,12 +10,14 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Lib.WebUI.Controllers
 {
     public class UserController : Controller
     {
         public async Task<IActionResult> Index()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -30,6 +32,7 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     var books = await res.Content.ReadAsAsync<UserCollectionViewModel>();
+
                     var model = new UserCollectionViewModel()
                     {
                         UsersCollection = books.UsersCollection
@@ -42,12 +45,14 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult AddUser()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return View("Cards/_AddUser", new CreateUserViewModel());
         }
 
         [HttpPost]
         public async Task<IActionResult> AddUser(CreateUserViewModel model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             if (!ModelState.IsValid)
             {
                 return View("Cards/_AddUser", model);
@@ -84,6 +89,7 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult EditUser(long id, string firstName, string lastName, string email, string clas, int active)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             var isActive = active == 1 ? true : false;
             var model = new EditUserViewModel()
             {
@@ -99,6 +105,7 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -130,6 +137,7 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public IActionResult ShowStatistics()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return PartialView("Cards/_UserModal");
         }
 
@@ -137,6 +145,7 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserBooks(long id)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -161,9 +170,10 @@ namespace Lib.WebUI.Controllers
         }
 
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public async Task<IActionResult> GetUserLoginBooks(long id)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -181,6 +191,7 @@ namespace Lib.WebUI.Controllers
                     {
                         Books = bookCollection
                     };
+
                     return View("Cards/_UserOwnBooks", model);
                 }
             }
@@ -190,12 +201,14 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult ChangePassword()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return View("Cards/_ChangePassword", new ChangePasswordRequest());
         }
 
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             if (!ModelState.IsValid)
             {
                 return View("Cards/_ChangePassword", model);
@@ -226,7 +239,6 @@ namespace Lib.WebUI.Controllers
                 }
 
             }
-
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
     }

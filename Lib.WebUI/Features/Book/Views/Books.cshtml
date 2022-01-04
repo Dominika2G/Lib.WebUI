@@ -1,4 +1,4 @@
-﻿@model BookViewModel
+﻿@model BookAuthenticationViewModel
 <div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
     <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue" />
     <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="searchBooks()" id="BooksearchButton">
@@ -30,21 +30,27 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="text-center lib-p-2">
-                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-40" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
-                        <div class="text-center lib-p-2">
+                       @* <div class="text-center lib-p-2">
                             <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
-                        </div>
-                        <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
-                        </div>
+                        </div>*@
+                        @*<div class="text-center lib-p-2">
+            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
+        </div>*@
+                        @if (Model.IsAuthenticated)
+                        {
+                            <div class="text-center lib-p-2">
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
+                            </div>
+                        }
                     </div>
                 </div>
             }
             else
             {
                 <div class="col-auto">
-                    <div class="row justify-content-end ">
+                    <div class="row justify-content-end">
                         <div class="lib-p-2">
                             @if (book.IsAvailable)
                             {
@@ -57,21 +63,21 @@
                         </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="text-center lib-p-2">
-                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                        <div class="row text-center lib-p-2">
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
                         @if (book.IsAvailable)
                         {
-                            <div class="text-center lib-p-2">
+                            <div class="row text-center lib-p-2 lib-ml-4">
                                 <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="bookReservation(@book.BookId)">Rezerwuj</button>
                            </div>
                         }
-                    <div class="text-center lib-p-2">
-                        @if (book.IsAvailable)
+                    <div class="text-center lib-p-2 lib-ml-4">
+                        @if (book.IsAvailable && Model.IsAuthenticated)
                         {
                             <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30" href='@Url.Action(nameof(BookController.MakeReservation), "Book", new { id = book.BookId })'>Wypożycz</a>
                         }
-                        else
+                        else if(Model.IsAuthenticated)
                         {
                             <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
                         }
