@@ -14,9 +14,9 @@ namespace Lib.WebUI.Features.User.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "*Adres email jest wymagany")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "*Adres email jest niepoprawny")]
         public string Email { get; set; }
+
         [Range(1, long.MaxValue, ErrorMessage = "*Rola użytkownika jest wymagana")]
         public long RoleId { get; set; }
 
@@ -26,7 +26,7 @@ namespace Lib.WebUI.Features.User.Models
 
         [Required(ErrorMessage = "*Potworedzenie hasła jest wymagane")]
         [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "*Podane hasła nie jest takie samo")]
         public string ConfirmPassword { get; set; }
         public string Class { get; set; }
     }

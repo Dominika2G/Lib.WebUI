@@ -11,7 +11,8 @@ namespace Lib.WebUI.Features.Book.Models
     {
         public List<UserDetail> UsersCollection { get; set; }
         public long BookId { get; set; }
-        [Required(ErrorMessage = "*Aby wypożyczyć książkę należy wybrać użytkownika")]
+        //[Required(ErrorMessage = "*Aby wypożyczyć książkę należy wybrać użytkownika")]
+        [Range(1, long.MaxValue, ErrorMessage =  "*Aby wypożyczyć książkę należy wybrać użytkownika")]
         public long UserId { get; set; }
     }
 }
