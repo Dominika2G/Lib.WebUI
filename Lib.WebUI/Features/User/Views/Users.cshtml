@@ -1,12 +1,6 @@
 ﻿@model UserCollectionViewModel
 
-<div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
-    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." />
-    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; ">
-        <img src="~/img/Other/lib-search.svg" />
-    </button>
-</div>
-<div class="row">
+<div class="row lib-mb-5 lib-mt-5 lib-mb-5">
     @foreach (var user in Model.UsersCollection)
     {
         <div class="col-6 d-flex">

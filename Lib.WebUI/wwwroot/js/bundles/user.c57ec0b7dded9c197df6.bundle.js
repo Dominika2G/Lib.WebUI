@@ -16,7 +16,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _user_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user.scss */ \"./Features/User/Content/user.scss\");\n\n\n//# sourceURL=webpack://lib.webui/./Features/User/Content/user.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _user_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user.scss */ \"./Features/User/Content/user.scss\");\n\n\nwindow.user = (() => {\n  const init = () => {};\n\n  const back = () => {\n    window.location.href = returnUrl;\n  };\n\n  const returnBook = id => {\n    var model = {\n      BookId: id\n    };\n    httpClient.post({\n      url: returnBookUrl,\n      data: model\n    }).then(() => {\n      location.reload();\n    });\n  };\n\n  const backUser = () => {\n    window.location.href = returnUserUrl;\n  };\n\n  const changeStateReservation = id => {\n    var model = {\n      BookId: id\n    };\n    httpClient.post({\n      url: changeStateReservUrl,\n      data: model\n    }).then(() => {\n      location.reload();\n    });\n  };\n\n  return {\n    init,\n    back,\n    returnBook,\n    backUser,\n    changeStateReservation\n  };\n})();\n\n$(function () {\n  user.init();\n});\n\n//# sourceURL=webpack://lib.webui/./Features/User/Content/user.js?");
 
 /***/ }),
 

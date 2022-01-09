@@ -47,27 +47,3 @@
         </div>
     </div>
 </div>
-<script>
-    function edit(UserId) {
-        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User", new { id = "ID" })'.replace("ID", UserId);
-    }
-    function editUser(id) {
-        var model = {
-            id: id
-        }
-
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action(nameof(UserController.EditUser), "User")',
-            data: model,
-            success: {
-            }
-
-
-        });
-    };
-
-    function edit() {
-        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User")';
-    }
-</script>

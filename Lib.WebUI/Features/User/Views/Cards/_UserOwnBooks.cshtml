@@ -1,7 +1,7 @@
 ﻿@model UserBooksViewModel
 
 <div class="row lib-mt-8 lib-mx-10">
-    <a class="lib-content-medium-m lib-text-gray-800" onclick="back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
+    <a class="lib-content-medium-m lib-text-gray-800" onclick="user.back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
 </div>
 @foreach (var book in Model.Books)
 {
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
+                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="user.returnBook(@book.BookId)">Anuluj rezerwację</button>
                         </div>
                         <div class="text-center lib-p-2">
                             <a class="btn lib-simple-btn lib-content-semibold-m lib-w-40" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
@@ -35,16 +35,16 @@
             }
             else
             {
-        <div class="col-auto">
-            <div class="row justify-content-end ">
-                <div class="lib-p-2">
-                    <span class="lib-disabled-card lib-content-semibold-s lib-w-35">WYPOŻYCZONA</span>
+                <div class="col-auto">
+                    <div class="row justify-content-end ">
+                        <div class="lib-p-2">
+                            <span class="lib-disabled-card lib-content-semibold-s lib-w-35">WYPOŻYCZONA</span>
+                        </div>
+                    </div>
+                    <div class="row text-center lib-p-2">
+                        <a class="btn lib-simple-btn lib-content-semibold-m lib-w-35" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center lib-p-2">
-                <a class="btn lib-simple-btn lib-content-semibold-m lib-w-35" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
-            </div>
-        </div>
             }
         </div>
     </div>
@@ -59,26 +59,10 @@
     </div>
 }
 
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "user")
+}
 <script>
-    function back() {
-        window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
-    }
-
-    function returnBook(id) {
-        var model = {
-            UserId: 2,
-            BookId: id
-        }
-
-        httpClient
-            .post({
-                url: '@Url.Action(nameof(BookController.ReturnBook), "Book")',
-                data: model
-            })
-            .then(
-                () => {
-                    location.reload();
-                }
-            )
-    }
+    const returnBookUrl = '@Url.Action(nameof(BookController.ReturnBook), "Book")';
+    const returnUrl = '@Url.Action(nameof(BookController.Index), "Book")';
 </script>
