@@ -1,6 +1,6 @@
 ﻿@model BookDetailViewModel
 <div class="row lib-mt-8 lib-mx-10">
-    <a class="lib-content-medium-m lib-text-gray-800" onclick="back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
+    <a class="lib-content-medium-m lib-text-gray-800" onclick="book.back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
 </div>
 <div class="row lib-mx-10">
     <partial name="Cards/_BookDetails" model="Model" />
@@ -8,7 +8,7 @@
 <div class="row lib-mx-35">
     @foreach (var comment in Model.CommentList)
     {
-        <partial name="Cards/_CommentCard" model="comment"/>
+        <partial name="Cards/_CommentCard" model="comment" />
     }
 </div>
 <div class="row">
@@ -30,34 +30,15 @@
         }
     </select>
     <div class="col-2 lib-p-8">
-        <button class="btn lib-dark-btn lib-content-semibold-m lib-h-12 lib-w-30" onclick="addComment(@Model.BookDetails.BookId)">
+        <button class="btn lib-dark-btn lib-content-semibold-m lib-h-12 lib-w-30" onclick="book.addComment(@Model.BookDetails.BookId)">
             WYŚLIJ
         </button>
     </div>
 </div>
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "book")
+}
 <script>
-    function addComment(id) {
-        var comment = $("#CommentForm").val();
-        var rating = $("#RatingId").val();
-        var model = {
-            description: comment,
-            rating: rating,
-            bookId: id
-        }
-
-        httpClient
-            .post({
-                url: '@Url.Action(nameof(BookController.AddComment), "Book")',
-                data: model
-            })
-            .then(
-                () => {
-                    location.reload();
-                }
-            )
-    }
-
-    function back() {
-        window.location.href = '@Url.Action(nameof(BookController.Index), "Book")'
-    }
+    const addCommentUrl = '@Url.Action(nameof(BookController.AddComment), "Book")';
+    const returnUrl = '@Url.Action(nameof(BookController.Index), "Book")';
 </script>

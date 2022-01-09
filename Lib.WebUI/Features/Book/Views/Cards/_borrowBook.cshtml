@@ -2,7 +2,7 @@
 
 <div class="lib-mb-5 lib-mt-25 lib-white-card lib-w-163">
     <div class="row lib-mt-8 lib-mx-10">
-        <a class="lib-content-medium-m lib-text-gray-800" onclick="back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
+        <a class="lib-content-medium-m lib-text-gray-800" onclick="borrowBook.back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
     </div>
     <div class="row lib-pt-8 justify-content-center">
         <span class="lib-content-extrabold-xl lib-text-blue-gray-800">WYPOŻYCZ KSIĄŻKĘ</span>
@@ -25,8 +25,7 @@
     </form>
 </div>
 
-<script>
-    function back() {
-        window.location.href = '@Url.Action(nameof(BookController.Index), "Book")'
-    }
-</script>
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "borrowBook")
+}
+

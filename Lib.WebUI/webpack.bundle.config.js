@@ -14,6 +14,8 @@
 
         statistics: './Features/Statistics/Content/statistics.js',
 
-        addBook: './Features/Book/Content/AddBook/addBook.js'
+        addBook: './Features/Book/Content/AddBook/addBook.js',
+
+        borrowBook: './Features/Book/Content/BorrowBook/borrowBook.js'
     }
 };
