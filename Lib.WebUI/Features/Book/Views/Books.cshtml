@@ -9,9 +9,6 @@
 {
     <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
         <div class="row lib-p-3">
-           @* <div class="col-auto">
-                <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-            </div>*@
             <div class="col lib-ml-7">
                 <div class="row lib-mt-5">
                     <span class="lib-content-medium-xl">@book.AuthorFirstName @book.AuthorLastName</span>
@@ -32,12 +29,6 @@
                         <div class="text-center lib-p-2">
                             <a class="btn lib-simple-btn lib-content-semibold-m lib-w-40" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
-                       @* <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
-                        </div>*@
-                        @*<div class="text-center lib-p-2">
-            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
-        </div>*@
                         @if (Model.IsAuthenticated)
                         {
                             <div class="text-center lib-p-2">

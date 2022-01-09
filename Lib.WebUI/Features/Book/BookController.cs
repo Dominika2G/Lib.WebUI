@@ -86,11 +86,11 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        public IActionResult GenerateCode()
+        /*public IActionResult GenerateCode()
         {
             ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return View("Cards/_CodeGenerate");
-        }
+        }*/
 
         public async Task<IActionResult> AddBookAsync()
         {

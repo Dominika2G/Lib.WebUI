@@ -33,11 +33,6 @@
                     @Html.EditorFor(model => model.Class, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Class", @placeholder = "Klasa" } })
                 </div>
                 <div class="row lib-mb-6">
-                    @*<select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="IsActive" aria-label="">
-                        <option class="lib-content-medium-l lib-text-gray-500" selected>Aktywnosć konta</option>
-                        <option class="lib-content-medium-l lib-text-gray-500" value="true">Aktywny</option>
-                        <option class="lib-content-medium-l lib-text-gray-500" value="false">Nieaktywny</option>
-                    </select>*@
                     @Html.DropDownListFor(model => model.IsActive, new List<SelectListItem>
                     {
                           new SelectListItem { Text = "Aktywny", Value = "true"},

@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("core")" />
     @RenderSection("BundleStyles", required: false)
 </head>
-|@{ 
-    //ViewBag.IsAuthenticated = false;
-}
 <body>
     <header>
         <div class="lib-main-sidenav lib-bg-gray-50">
@@ -74,26 +71,15 @@
                 Książki
             </button>
             <div class="dropdown-container lib-mt-3">
-                @*<a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.AddAuthor), "Book")">Dodaj autora</a>
-                <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.AddBook), "Book")">Dodaj książkę</a>*@
                 <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(BookController.Index), "Book")">Znajdź książkę</a>
             </div>
             <button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-h-14">
                 Użytkownicy
             </button>
             <div class="dropdown-container lib-mt-3">
-                @*<a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.Index), "User")">Podgląd użytkowników</a>
-                <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.AddUser), "User")">Dodaj użytkownika</a>*@
                 <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.GetUserLoginBooks), "User")">Moje książki</a>
                 <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(UserController.ChangePassword), "User")">Zmień hasło</a>
             </div>
-            @*<button class="dropdown-btn active lib-content-medium-l lib-text-blue-gray-50 lib-h-14">
-                Statystyki
-            </button>
-            <div class="dropdown-container lib-mt-3">
-                <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.Index), "Statistics")" id="ChartStatistics">Podstawowe statystyki</a>
-                <a class="lib-content-medium-m lib-text-blue-gray-50 lib-h-14 lib-ml-3" href="@Url.Action(nameof(StatisticsController.GetBooksStatistics), "Statistics")" id="BookStatistics">Lista książek</a>
-            </div>*@
         </div>
     }
     <div class="lib-content-container">
@@ -105,9 +91,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script charset="utf-8" type="text/javascript" src="~/js/bundles/@WebpackChunkNamer.GetJsFile("core")"></script>
-    @*<script src="~/js/bundles//test.js" asp-append-version="true"></script>
-        <script src="~/js/bundles//home.js" asp-append-version="true"></script>*@
-    @*    <link rel="stylesheet" href="~/js/bundles/@WebpackChunkNamer.GetCssFile("autocore")" />*@
     @RenderSection("Scripts", required: false)
     @RenderSection("BundleScripts", required: false)
 </body>
@@ -115,8 +98,6 @@
 <script>
     var bookMenu;
     $(function () {
-        console.log("Hello world");
-
         httpClient
             .get({
                 url: '@Url.Action(nameof(AuthController.IsAuthenticated), "Auth")'
