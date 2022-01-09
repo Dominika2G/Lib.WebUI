@@ -67,8 +67,8 @@ namespace Lib.WebUI.Controllers
                         Expires = DateTime.Now.AddMinutes(10)
                     };
                     Response.Cookies.Append(key, token.Token, options);
-                    Response.Cookies.Append(UserId, token.UserID);
-                    Response.Cookies.Append(RoleId, token.RoleID);
+                    Response.Cookies.Append(UserId, token.UserID, options);
+                    Response.Cookies.Append(RoleId, token.RoleID, options);
                 }
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
