@@ -1,10 +1,6 @@
 {
   "core.css": "autocore.7e66d0d78b1689c2a1fb.bundle.css",
   "core.js": "autocore.7e66d0d78b1689c2a1fb.bundle.js",
-  "test.css": "autotest.aad968d2be2696644ab3.bundle.css",
-  "test.js": "autotest.aad968d2be2696644ab3.bundle.js",
-  "home.css": "autohome.78eb25e160af9fa6dc9c.bundle.css",
-  "home.js": "autohome.78eb25e160af9fa6dc9c.bundle.js",
   "login.css": "autologin.307a6e308dee6736750c.bundle.css",
   "login.js": "autologin.307a6e308dee6736750c.bundle.js",
   "book.css": "autobook.8e95bb69a953ba875cf6.bundle.css",

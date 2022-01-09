@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Home\Content\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\lib\chart\" />
   </ItemGroup>
