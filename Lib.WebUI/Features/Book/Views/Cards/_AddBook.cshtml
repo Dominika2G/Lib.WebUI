@@ -24,7 +24,7 @@
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    @Html.TextAreaFor(model => model.Description,  new { @class = "form-control lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3", @placeholder = "Opis książki" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3", @placeholder = "Opis książki" })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -32,24 +32,22 @@
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    @Html.EditorFor(model => model.BarCode, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "BarCode", @placeholder = "Przypisz kod", @id="barCode" } })
+                    @Html.EditorFor(model => model.BarCode, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "BarCode", @placeholder = "Przypisz kod", @id = "barCode" } })
                     @Html.ValidationMessageFor(model => model.BarCode, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <button type="button" class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2 lib-h-12 lib-w-30" onclick="generateCode()">Generuj kod</button>
+                    <button type="button" class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2 lib-h-12 lib-w-30" onclick="addBook.generateCode()">Generuj kod</button>
                 </div>
             </div>
         </div>
         <div class="row justify-content-end lib-pr-5 lib-pb-5">
-            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m">DODAJ</button> 
+            <button type="submit" class="btn lib-dark-btn lib-text-gray-50 lib-w-24 lib-h-10 lib-content-bold-m">DODAJ</button>
         </div>
     </form>
 </div>
-<script>
-    function generateCode() {
-        let r = Math.floor(Math.random() * 1000000000 + 1);
-        $("#barCode").val(r);
-    }
-</script>
+
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "addBook")
+}

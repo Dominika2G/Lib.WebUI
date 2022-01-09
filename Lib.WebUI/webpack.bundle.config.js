@@ -12,6 +12,8 @@
 
         user: './Features/User/Content/user.js',
 
-        statistics: './Features/Statistics/Content/statistics.js'
+        statistics: './Features/Statistics/Content/statistics.js',
+
+        addBook: './Features/Book/Content/AddBook/addBook.js'
     }
 };
