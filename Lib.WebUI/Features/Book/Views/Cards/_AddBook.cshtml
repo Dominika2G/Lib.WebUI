@@ -7,37 +7,38 @@
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookTitleForm" name="Title" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Tytuł" type="text" />
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Title", @placeholder = "Tytuł" } })
+
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <select class="lib-select form-select lib-content-medium-l lib-text-gray-500" id="AuthorDropdown" name="AuthorId" aria-label="">
-                        <option class="lib-content-medium-l lib-text-gray-500" selected>Author</option>
-                        @foreach (var author in Model.Authors)
-                        {
-                            <option class="lib-content-medium-l lib-text-gray-500" value="@author.AuthorId">@author.FirstName @author.LastName</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row lib-p-3">
-            <div class="col lib-ml-2 lib-mr-2">
-                <div class="row lib-mb-2">
-                    <textarea id="DescriptionForm" name="Description" class="lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3" placeholder="Opis książki" type="text"></textarea>
+                    @Html.DropDownListFor(model => model.AuthorId, Model.Authors.Select(x => new SelectListItem { Text = x.FirstName + " " + x.LastName, Value = x.AuthorId.ToString() }),
+                    "Wybierz rolę",
+                    new { @class = "lib-select form-select lib-content-medium-l lib-text-gray-500" })
+                    @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
         <div class="row lib-p-3">
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookCoverForm" name="Cover" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Dodaj okładkę" type="text" />
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control lib-textera lib-content-medium-l lib-text-gray-500 lib-pt-3", @placeholder = "Opis książki" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row lib-p-3">
+            <div class="col lib-ml-2 lib-mr-2">
+                <div class="row lib-mb-2">
+                    @Html.EditorFor(model => model.BarCode, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "BarCode", @placeholder = "Przypisz kod", @id = "barCode" } })
+                    @Html.ValidationMessageFor(model => model.BarCode, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col lib-ml-2 lib-mr-2">
                 <div class="row lib-mb-2">
-                    <input id="BookCodeForm" name="BarCode" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Przypisz kod" type="text" />
+                    <button type="button" class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2 lib-h-12 lib-w-30" onclick="addBook.generateCode()">Generuj kod</button>
                 </div>
             </div>
         </div>
@@ -46,3 +47,7 @@
         </div>
     </form>
 </div>
+
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "addBook")
+}

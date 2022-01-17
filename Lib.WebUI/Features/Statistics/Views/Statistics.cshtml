@@ -1,23 +1,17 @@
-﻿<div class="row lib-mt-11">
-    <div class="lib-white-card lib-mr-15">
+﻿@model StatisticsQuantityViewModel
+
+<div class="row lib-mt-11">
+    <div class="lib-white-card lib-mr-10 lib-mt-10">
         <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
             AKTUALNY STAN BIBLIOTEKI
         </div>
         <canvas class="lib-p-10" id="myChart" width="400" height="400"></canvas>
     </div>
-    <div class="lib-white-card">
+    <div class="lib-white-card lib-mt-10">
         <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
-            POZYCJA DO UZGODNIENIA
+            STATUS UŻYTKOWNIKÓW
         </div>
         <canvas class="lib-p-10" id="myChart2" width="400" height="400"></canvas>
-    </div>
-</div>
-<div class="row lib-mt-11 lib-pb-11">
-    <div class="lib-white-card lib-mr-15">
-        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
-            MIESIĘCZNA STATYSTYKA WYPOŻYCZEŃ
-        </div>
-        <canvas class="lib-p-10" id="myLineChart" width="400" height="200"></canvas>
     </div>
 </div>
 
@@ -25,6 +19,99 @@
 @section BundleScripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js" integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "statistics")
+}
+
+@section Scripts {
+
+    <script>
+    const getSettingsUrl = '@Url.Action(nameof(StatisticsController.GetStatistics), "Statistics")';
+    const chartData = @Json.Serialize(Model);
+
+    function getValues() {
+        $.ajax({
+            url: '@Url.Action(nameof(StatisticsController.GetStatistics), "Statistics")',
+            type: 'get',
+            success: function (data) {
+                generatePieChartWithActualState(data);
+            }
+        });
+    }
+
+    function getUsersValues() {
+        $.ajax({
+            url: '@Url.Action(nameof(StatisticsController.GetUserStatistics), "Statistics")',
+            type: 'get',
+            success: function (data) {
+                generatePieChartWithActualUserState(data);
+            }
+        });
+    }
+
+    var data = getValues();
+    console.log(data);
+    var data1 = getUsersValues();
+    function generatePieChartWithActualState(data) {
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Dostępne', 'Wypożyczono', 'Zarezerwowano'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [data.availableBook, data.borrowedBook, data.reservedBook],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function generatePieChartWithActualUserState(data) {
+        const ctx1 = document.getElementById('myChart2');
+        const myChart2 = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Aktywni', 'Nieaktywni'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [data.availableUsers, data.disabledUsers],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+    </script>
 }
 
 @section BundleStyles {

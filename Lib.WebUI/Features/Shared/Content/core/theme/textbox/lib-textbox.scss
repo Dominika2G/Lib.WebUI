@@ -14,8 +14,7 @@
 
     &.form-control {
         &:focus {
-            background: $blue-gray-100;
-            border: 1.5px solid $blue-gray-700;
+            border: 2px solid $blue-gray-700;
             box-shadow: none;
         }
     }
@@ -60,8 +59,7 @@
 
     &.form-control {
         &:focus {
-            background: $blue-gray-100;
-            border: 1.5px solid $blue-gray-700;
+            border: 2px solid $blue-gray-700;
             box-shadow: none;
         }
     }

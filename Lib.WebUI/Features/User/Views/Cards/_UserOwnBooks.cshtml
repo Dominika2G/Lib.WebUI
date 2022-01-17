@@ -1,7 +1,7 @@
 ﻿@model UserBooksViewModel
 
 <div class="row lib-mt-8 lib-mx-10">
-    <a class="lib-content-medium-m lib-text-gray-800" onclick="user.backUser()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
+    <a class="lib-content-medium-m lib-text-gray-800" onclick="user.back()"><img src="~/img/Other/lib-chervon-left.svg" />Wróć</a>
 </div>
 @foreach (var book in Model.Books)
 {
@@ -28,7 +28,7 @@
                             <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="user.returnBook(@book.BookId)">Anuluj rezerwację</button>
                         </div>
                         <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="user.changeStateReservation(@book.BookId)">Wypożycz</button>
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-40" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,8 @@
                             <span class="lib-disabled-card lib-content-semibold-s lib-w-35">WYPOŻYCZONA</span>
                         </div>
                     </div>
-                    <div class="row justify-content-end">
-                        <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-35" onclick="user.returnBook(@book.BookId)">Zwróć</button>
-                        </div>
+                    <div class="row text-center lib-p-2">
+                        <a class="btn lib-simple-btn lib-content-semibold-m lib-w-35" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                     </div>
                 </div>
             }
@@ -54,10 +52,10 @@
 @if (Model.Books.Count == 0)
 {
     <div class="row lib-mt-8 lib-mx-10">
-        <span class="lib-content-medium-m lib-text-gray-800">Obecnie nie użytkownik nie ma wypożyczonych książek.</span>
+        <span class="lib-content-medium-m lib-text-gray-800">Obecnie nie masz wypożyczonych żadnych książek.</span>
     </div>
     <div class="row lib-mt-8 lib-mx-10">
-        <span class="lib-content-medium-m lib-text-gray-800">Wróć do strony głównej aby znaleźć interesującą książkę.</span>
+        <span class="lib-content-medium-m lib-text-gray-800">Wróć do strony głównej aby znaleźć interesującą pozycję.</span>
     </div>
 }
 
@@ -66,7 +64,5 @@
 }
 <script>
     const returnBookUrl = '@Url.Action(nameof(BookController.ReturnBook), "Book")';
-    const returnUserUrl = '@Url.Action(nameof(UserController.Index), "User")';
-    const changeStateReservUrl = '@Url.Action(nameof(BookController.ChangeStateReservation), "Book")';
-
+    const returnUrl = '@Url.Action(nameof(BookController.Index), "Book")';
 </script>

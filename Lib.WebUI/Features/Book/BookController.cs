@@ -1,5 +1,7 @@
 ﻿using BarcodeLib;
+using Lib.WebUI.Features.Auth;
 using Lib.WebUI.Features.Book.Models;
+using Lib.WebUI.Features.User.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +11,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,41 +21,55 @@ namespace Lib.WebUI.Controllers
     {
         public async Task<IActionResult> Index()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
-                
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
                 HttpResponseMessage res = await client.GetAsync("Book/AllBooks");
 
                 if (res.IsSuccessStatusCode)
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
-                    var model = new BookViewModel()
+                    var model = new BookAuthenticationViewModel()
                     {
-                        BookDetails = books.BookDetails
-                    };
+                        BookDetails = books.BookDetails,
+                        IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false
+                };
+
                     return View("Books", model);
                 }
             }
-            return View("Books");
+            return RedirectToAction(nameof(AuthController.Index), "Auth");
         }
 
         public IActionResult AddAuthor()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return View("Cards/_AddAuthor", new AddAuthorViewModel());
         }
 
         [HttpPost]
         public async Task<IActionResult> AddAuthor(AddAuthorViewModel model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            if (!ModelState.IsValid)
+            {
+                return View("Cards/_AddAuthor", model);
+            }
+
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     FirstName = model.FirstName,
@@ -69,18 +86,22 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        public IActionResult GenerateCode()
+        /*public IActionResult GenerateCode()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             return View("Cards/_CodeGenerate");
-        }
+        }*/
 
         public async Task<IActionResult> AddBookAsync()
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync("Book/GetAuthors");
 
@@ -103,11 +124,36 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook(AddBookViewModel model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            if (!ModelState.IsValid)
+            {
+                string baseUrl2 = "https://localhost:44380/";
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl2);
+                    client.DefaultRequestHeaders.Clear();
+                    var cookies = Request.Cookies["Bearer"];
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                    HttpResponseMessage res = await client.GetAsync("Book/GetAuthors");
+
+                    if (res.IsSuccessStatusCode)
+                    {
+                        var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                        List<Author> x = await res.Content.ReadAsAsync<List<Author>>();
+                        model.Authors = x;
+                        return View("Cards/_AddBook", model);
+                    }
+                }
+            }
+
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     Title = model.Title,
@@ -132,11 +178,14 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> BookDetails(long id)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/BookDetail?Id={0}", id));
 
@@ -154,11 +203,14 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> BookReserved(Bookstatusrequest model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -176,16 +228,18 @@ namespace Lib.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ReturnBook(Bookstatusrequest model)
+        public async Task<IActionResult> ReturnBook(BookReturnRequest model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
-                    UserId = model.UserId,
                     BookId = model.BookId
                 };
                 StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
@@ -202,11 +256,14 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeStateReservation(Bookstatusrequest model)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -222,15 +279,75 @@ namespace Lib.WebUI.Controllers
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
-
-        [HttpPost]
-        public async Task<IActionResult> BorrowBook(Bookstatusrequest model)
+        public async Task<IActionResult> MakeReservation(long id)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                HttpResponseMessage res = await client.GetAsync("Auth/getUsers");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                    UserCollectionViewModel x = await res.Content.ReadAsAsync<UserCollectionViewModel>();
+                    var model = new MakeReservationViewModel()
+                    {
+                        UsersCollection = x.UsersCollection,
+                        BookId = id
+                    };
+
+                    return View("Cards/_borrowBook", model);
+                }
+            }
+
+            return View("Cards/_borrowBook", new AddBookViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BorrowBook(Bookstatusrequest model)
+        {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            if (!ModelState.IsValid)
+            {
+                string baseUrl2 = "https://localhost:44380/";
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(baseUrl2);
+                    client.DefaultRequestHeaders.Clear();
+                    var cookies = Request.Cookies["Bearer"];
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+
+                    HttpResponseMessage res = await client.GetAsync("Auth/getUsers");
+
+                    if (res.IsSuccessStatusCode)
+                    {
+                        var EmpResponse = res.Content.ReadAsStringAsync().Result;
+                        UserCollectionViewModel x = await res.Content.ReadAsAsync<UserCollectionViewModel>();
+                        var model2 = new MakeReservationViewModel()
+                        {
+                            UsersCollection = x.UsersCollection,
+                            BookId = model.BookId
+                        };
+
+
+                        return View("Cards/_borrowBook", model2);
+                    }
+                }
+               // return View("Cards/_borrowBook", model);
+            }
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
                 var content = new
                 {
                     UserId = model.UserId,
@@ -255,11 +372,14 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> SearchBook(string data)
         {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
 
                 HttpResponseMessage res = await client.GetAsync(string.Format("Book/GetSelectedBook?TitleOrBarCode={0}", data));
 
@@ -267,17 +387,46 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     BookViewModel books = await res.Content.ReadAsAsync<BookViewModel>();
-                    var model = new BookViewModel()
+                    var model = new BookAuthenticationViewModel()
                     {
-                        BookDetails = books.BookDetails
-                    };
+                        BookDetails = books.BookDetails,
+                        IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false
+                };
                     return View("Books", model);
                 }
             }
             return View("Books");
         }
 
-        public IActionResult GenerateBarCode()
+        [HttpPost]
+        public async Task<IActionResult> AddComment(AddCommentRequest model)
+        {
+            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            string baseUrl = "https://localhost:44380/";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Clear();
+                var cookies = Request.Cookies["Bearer"];
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cookies);
+                var content = new
+                {
+                    Description = model.Description,
+                    Rating = model.Rating,
+                    BookId = model.BookId
+                };
+                StringContent t = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("Book/AddComment", t);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(BookController.Index), "Book");
+                }
+            }
+            return RedirectToAction(nameof(BookController.Index), "Book");
+        }
+
+        /*public IActionResult GenerateBarCode()
         {
             Barcode barcode = new Barcode();
             Image img = barcode.Encode(TYPE.CODE39, "256987", Color.Black, Color.White, 250, 100);
@@ -317,6 +466,6 @@ namespace Lib.WebUI.Controllers
                 }
             }
             //return View();
-        }
+        }*/
     }
 }

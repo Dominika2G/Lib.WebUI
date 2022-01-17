@@ -1,16 +1,14 @@
 {
-  "core.css": "autocore.7b164fbde7b0549803f4.bundle.css",
-  "core.js": "autocore.7b164fbde7b0549803f4.bundle.js",
-  "test.css": "autotest.aad968d2be2696644ab3.bundle.css",
-  "test.js": "autotest.aad968d2be2696644ab3.bundle.js",
-  "home.css": "autohome.78eb25e160af9fa6dc9c.bundle.css",
-  "home.js": "autohome.78eb25e160af9fa6dc9c.bundle.js",
-  "login.css": "autologin.8bb1d8d2e8b1562d6805.bundle.css",
-  "login.js": "autologin.8bb1d8d2e8b1562d6805.bundle.js",
-  "book.css": "autobook.7df2a6e195183aa938bc.bundle.css",
-  "book.js": "autobook.7df2a6e195183aa938bc.bundle.js",
-  "user.css": "autouser.4349e88027d058a32ab8.bundle.css",
-  "user.js": "autouser.4349e88027d058a32ab8.bundle.js",
-  "statistics.css": "autostatistics.c07cddbeb63da82bea5d.bundle.css",
-  "statistics.js": "autostatistics.c07cddbeb63da82bea5d.bundle.js"
+  "core.css": "autocore.7e66d0d78b1689c2a1fb.bundle.css",
+  "core.js": "autocore.7e66d0d78b1689c2a1fb.bundle.js",
+  "login.css": "autologin.307a6e308dee6736750c.bundle.css",
+  "login.js": "autologin.307a6e308dee6736750c.bundle.js",
+  "book.css": "autobook.8e95bb69a953ba875cf6.bundle.css",
+  "book.js": "autobook.8e95bb69a953ba875cf6.bundle.js",
+  "user.css": "autouser.c57ec0b7dded9c197df6.bundle.css",
+  "user.js": "autouser.c57ec0b7dded9c197df6.bundle.js",
+  "statistics.css": "autostatistics.03c8d9647cae9f505345.bundle.css",
+  "statistics.js": "autostatistics.03c8d9647cae9f505345.bundle.js",
+  "addBook.js": "autoaddBook.0701ff6422ae12ffb5cb.bundle.js",
+  "borrowBook.js": "autoborrowBook.2cd35d1637b178c6bfed.bundle.js"
 }

@@ -7,6 +7,10 @@
         <div class="col">
             <div class="row lib-mt-1">
                 <span class="lib-content-medium-l">@Model.FirstName @Model.LastName</span>
+                @if (Model.IsActive != 1)
+                {
+                    <span class="lib-text-red-primary lib-content-semibold-xs"> ( KONTO NIEAKTYWNE ) </span>
+                }
             </div>
             <div class="row">
                 @if (Model.RoleName == "User")
@@ -22,51 +26,24 @@
                     </span>
                 }
             </div>
-            <div class="row ">
-                <span class="lib-content-regular-s">Klasa @Model.Class</span>
-            </div>
+            @if (Model.RoleName == "User")
+            {
+                <div class="row">
+                    <span class="lib-content-regular-s">Klasa @Model.Class</span>
+                </div>
+            }
         </div>
         <div class="col-auto">
             <div class="row justify-content-end ">
                 <div class="text-center lib-p-2">
-                    @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" onclick="edit(@Model.UserId)">Zarządzaj</button>*@
-                    <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.EditUser), "User", new { id = @Model.UserId })'>Zarządzaj</a>
+                    <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.EditUser), "User", new { id = @Model.UserId, firstName = Model.FirstName, lastName = Model.LastName, email = Model.Email, clas = Model.Class, active = Model.IsActive })'>Zarządzaj</a>
                 </div>
             </div>
             <div class="row justify-content-end">
                 <div class="text-center lib-p-2">
-                    @*<button class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2">Statystyki</button>*@
                     <a class="btn lib-simple-btn lib-content-regular-m lib-w-25 lib-mr-2" href='@Url.Action(nameof(UserController.GetUserBooks), "User", new { id = @Model.UserId })'>Statystyki</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    //const editCardUrl = '@Url.Action(nameof(UserController.EditUser), "User")';
-    function edit(UserId) {
-        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User", new { id = "ID" })'.replace("ID", UserId);
-    }
-    function editUser(id) {
-        var model = {
-            id: id
-        }
-        @*httpClient
-            .post({
-                url: '@Url.Action(nameof(UserController.EditUser), "User")'
-            });*@
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action(nameof(UserController.EditUser), "User")',
-            data: model,
-            success: {
-            }
-
-
-        });
-    };
-
-    function edit() {
-        window.location.href = '@Url.Action(nameof(UserController.EditUser), "User")';
-    }
-</script>

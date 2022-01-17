@@ -10,13 +10,21 @@
             <img class="lib-img" src="~/img/user.png"/>
         </div>
         <form asp-controller="Auth" asp-action="Login" data-method="POST" id="LofinForm" asp-antiforgery="false">
-            <div class="row lib-mb-10">
-                <input id="EmailForm" name="Email" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Nazwa u żytkownika" type="text" required/>
+            <div class="row lib-mb-10 form-grup">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name="Email", @placeholder = "Nazwa użytkownika" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
-            <div class="row lib-mb-12">
-                <input id="PasswordForm" name="Password" class="lib-textbox lib-content-medium-l lib-text-gray-500" placeholder="Hasło" type="password" data-val-required="The MyDate field is required." required/>
+            <div class="row lib-mb-6 form-grup">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control lib-textbox lib-content-medium-l lib-text-gray-500", @name = "Password", @Type="password", @placeholder = "Hasło" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
-            <div class="row justify-content-end">
+            @if (ViewBag.ErrorAuthorize != null)
+            {
+                <div class="row lib-mb-6">
+                    <label class="lib-content-medium-m lib-text-red-primary">@ViewBag.ErrorAuthorize</label>
+                </div>
+            }
+            <div class="row justify-content-end lib-mt-6 form-group">
                 <button type="submit" class="btn lib-dark-btn lib-content-semibold-m lib-text-gray-50 lib-w-24 lib-h-10">ZALOGUJ</button>
             </div>
         </form>

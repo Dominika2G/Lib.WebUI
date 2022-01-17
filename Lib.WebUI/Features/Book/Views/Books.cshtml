@@ -1,7 +1,7 @@
-﻿@model BookViewModel
+﻿@model BookAuthenticationViewModel
 <div class="row justify-content-end lib-mb-5 lib-mt-5 lib-mb-5 row lib-p-3">
-    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue"/>
-    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="searchBooks()"  id="BooksearchButton">
+    <input class="lib-search-textbox lib-w-45 lib-content-medium-m" placeholder="Search..." id="SearchValue" />
+    <button class="btn lib-button-header-light lib-w-10" style=" position: relative; right: 45px; bottom: 2px; " onclick="book.searchBooks()" id="BooksearchButton">
         <img src="~/img/Other/lib-search.svg" />
     </button>
 </div>
@@ -9,10 +9,7 @@
 {
     <div class="lib-mb-5 lib-mt-5 lib-white-card w-100 lib-mb-5">
         <div class="row lib-p-3">
-            <div class="col-auto">
-                <img src="~/img/BookCovers/Doktor-Sen.jpg" style="width:100px; height: 100px;" />
-            </div>
-            <div class="col">
+            <div class="col lib-ml-7">
                 <div class="row lib-mt-5">
                     <span class="lib-content-medium-xl">@book.AuthorFirstName @book.AuthorLastName</span>
                 </div>
@@ -30,21 +27,21 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="text-center lib-p-2">
-                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-40" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
-                        <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-40" onclick="returnBook(@book.BookId)">Anuluj rezerwację</button>
-                        </div>
-                        <div class="text-center lib-p-2">
-                            <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="changeStateReservation(@book.BookId)">Wypożycz</button>
-                        </div>
+                        @if (Model.IsAuthenticated)
+                        {
+                            <div class="text-center lib-p-2">
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="book.changeStateReservation(@book.BookId)">Wypożycz</button>
+                            </div>
+                        }
                     </div>
                 </div>
             }
             else
             {
                 <div class="col-auto">
-                    <div class="row justify-content-end ">
+                    <div class="row justify-content-end">
                         <div class="lib-p-2">
                             @if (book.IsAvailable)
                             {
@@ -57,33 +54,47 @@
                         </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="text-center lib-p-2">
-                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30 lib-mr-2" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
+                        <div class="row text-center lib-p-2">
+                            <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30" href='@Url.Action(nameof(BookController.BookDetails), "Book", new { id = book.BookId })'>Opis</a>
                         </div>
-                        @if(book.IsAvailable)
+                        @if (book.IsAvailable)
                         {
-                            <div class="text-center lib-p-2">
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="bookReservation(@book.BookId)">Rezerwuj</button>
+                            <div class="row text-center lib-p-2 lib-ml-4">
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="book.bookReservation(@book.BookId)">Rezerwuj</button>
                             </div>
                         }
-                        <div class="text-center lib-p-2">
-                            @if (book.IsAvailable)
+                        <div class="text-center lib-p-2 lib-ml-4">
+                            @if (book.IsAvailable && Model.IsAuthenticated)
                             {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="borrowBook(@book.BookId)">Wypożycz</button>
+                                <a class="btn lib-simple-btn lib-content-semibold-m lib-w-30" href='@Url.Action(nameof(BookController.MakeReservation), "Book", new { id = book.BookId })'>Wypożycz</a>
                             }
-                            else
+                            else if (Model.IsAuthenticated)
                             {
-                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="returnBook(@book.BookId)">Zwróć</button>
+                                <button class="btn lib-simple-btn lib-content-semibold-m lib-w-30" onclick="book.returnBook(@book.BookId)">Zwróć</button>
                             }
                         </div>
                     </div>
                 </div>
             }
         </div>
-            </div>
+    </div>
+}
+
+@section BundleScripts {
+    @await Html.PartialAsync(AppSettingsOptionsAccessor.Value.VersionedScriptPartialView, "book")
 }
 <script>
-    function searchBooks() {
+    const searchBookUrl = '@Url.Action(nameof(BookController.Search), "Book")';
+    const searchResultUrl = '@Url.Action(nameof(BookController.SearchBook), "Book", new { data = "DATA" })';
+    const reservationUrl = '@Url.Action(nameof(BookController.BookReserved), "Book")';
+    const returnUrl = '@Url.Action(nameof(BookController.Index), "Book")';
+    const returnBookUrl = '@Url.Action(nameof(BookController.ReturnBook), "Book")';
+    const changeStateReservationUrl = '@Url.Action(nameof(BookController.ChangeStateReservation), "Book")';
+</script>
+
+
+<script>
+    @*function searchBooks() {
         var currentValue = $("#SearchValue").val();
 
         var model = {
@@ -104,7 +115,7 @@
     }
     function bookReservation(id) {
         var model = {
-            UserId: 2,
+            UserId: 0,
             BookId: id
         }
 
@@ -122,7 +133,6 @@
 
     function returnBook(id) {
         var model = {
-            UserId: 2,
             BookId: id
         }
 
@@ -154,9 +164,9 @@
                     window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
                 }
             )
-    }
+    }*@
 
-    function borrowBook(id) {
+    @*function borrowBook(id) {
         var model = {
             UserId: 2,
             BookId: id
@@ -172,5 +182,5 @@
                     window.location.href = '@Url.Action(nameof(BookController.Index), "Book")';
                 }
             )
-    }
+    }*@
 </script>

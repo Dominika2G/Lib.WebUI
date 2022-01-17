@@ -1,0 +1,93 @@
+﻿@model BooksStatisticsViewModel
+
+
+<div class="row lib-mt-11">
+    <div class="lib-white-card lib-mr-10 lib-mt-10 w-100">
+        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
+            LISTA ZAREZERWOWANYCH I WYPOŻYCZONYCH KSIĄŻEK
+        </div>
+        <div class="lib-content-semibold-m lib-text-gray-600 lib-pt-3">
+            <table class="w-100">
+                <tr class="lib-content-bold-m">
+                    <th>Id</th>
+                    <th>Autor</th>
+                    <th>Tytu</th>
+                    <th>Użytkownik</th>
+                    <th>Data wypożyczenia</th>
+                    <th>Data zwrotu</th>
+                    <th>Długość wypożyczenia</th>
+                    <th>Dostępność</th>
+                </tr>
+                @foreach (var book in Model.BorrowBooks)
+                {
+                <tr>
+                    <td>@book.BookId</td>
+                    <td>@book.AuthorFirstName @book.AuthorLastName</td>
+                    <td>@book.Title</td>
+                    <td>@book.Email</td>
+                    <td>@book.LoanDate.ToShortDateString()</td>
+                    @if (book.ReturnDate == DateTime.Today)
+                    {
+                        <td>
+                            <span class="lib-disabled-card">
+                                @book.ReturnDate.ToShortDateString()
+                            </span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <span class="lib-enabled-card">
+                                @book.ReturnDate.ToShortDateString()
+                            </span>
+                        </td>
+                    }
+                    <td>@book.RentalPeriod dni</td>
+                    @if (book.IsAvailable == false && book.IsReserved == false)
+                    {
+                        <td>
+                            <span class="lib-disabled-card lib-w-45">
+                                NIEDOSTĘPNA
+                            </span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <span class="lib-reserved-card lib-w-45">
+                                ZAREZERWOWANA
+                            </span>
+                        </td>
+                    }
+
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row lib-mt-5 lib-pb-10">
+    <div class="lib-white-card lib-mr-10 lib-mt-10 w-100">
+        <div class="lib-content-semibold-l lib-text-gray-600 lib-pt-3">
+            LISTA WSZYSTKICH KSIĄŻEK W BIBLIOTECE
+        </div>
+        <div class="lib-content-semibold-m lib-text-gray-600 lib-pt-3">
+            <table class="w-100">
+                <tr>
+                    <th>Autor</th>
+                    <th>tytuł</th>
+                    <th>Opis</th>
+                </tr>
+                @foreach (var book in Model.AllBooks)
+                {
+                    <tr>
+                        <td>@book.AuthorFirstName @book.AuthorLastName</td>
+                        <td>@book.Title</td>
+                        <td>@book.Description</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
