@@ -17,7 +17,12 @@ namespace Lib.WebUI.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -45,7 +50,12 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult AddUser()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             return View("Cards/_AddUser", new CreateUserViewModel());
         }
 
@@ -89,7 +99,12 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult EditUser(long id, string firstName, string lastName, string email, string clas, int active)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             var isActive = active == 1 ? true : false;
             var model = new EditUserViewModel()
             {
@@ -105,7 +120,12 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -137,7 +157,12 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public IActionResult ShowStatistics()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             return PartialView("Cards/_UserModal");
         }
 
@@ -145,7 +170,12 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserBooks(long id)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {

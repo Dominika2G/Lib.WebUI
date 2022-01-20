@@ -14,7 +14,12 @@ namespace Lib.WebUI.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -29,10 +34,6 @@ namespace Lib.WebUI.Controllers
                 {
                     var EmpResponse = res.Content.ReadAsStringAsync().Result;
                     StatisticsQuantityViewModel model = await res.Content.ReadAsAsync<StatisticsQuantityViewModel>();
-                    /*var model = new StatisticsQuantityViewModel()
-                    {
-                        BookDetails = books.BookDetails
-                    };*/
                     return View("Statistics", model);
                 }
             }
@@ -41,7 +42,9 @@ namespace Lib.WebUI.Controllers
 
         public async Task<JsonResult> GetStatistics()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -66,7 +69,8 @@ namespace Lib.WebUI.Controllers
 
         public async Task<JsonResult> GetUserStatistics()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -92,7 +96,12 @@ namespace Lib.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBooksStatistics(long id)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
