@@ -50,8 +50,15 @@ namespace Lib.WebUI.Controllers
 
         public IActionResult AddAuthor()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
-            return View("Cards/_AddAuthor", new AddAuthorViewModel());
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (isAuthenticated)
+            {
+                return View("Cards/_AddAuthor", new AddAuthorViewModel());
+            }else
+            {
+                return View("Error");
+            }
         }
 
         [HttpPost]
@@ -86,15 +93,14 @@ namespace Lib.WebUI.Controllers
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
 
-        /*public IActionResult GenerateCode()
-        {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
-            return View("Cards/_CodeGenerate");
-        }*/
-
         public async Task<IActionResult> AddBookAsync()
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
             {
@@ -124,7 +130,8 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook(AddBookViewModel model)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
             if (!ModelState.IsValid)
             {
                 string baseUrl2 = "https://localhost:44380/";
@@ -312,7 +319,12 @@ namespace Lib.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> BorrowBook(Bookstatusrequest model)
         {
-            ViewBag.IsAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            var isAuthenticated = Request.Cookies["RoleID"] == "1" ? true : false;
+            ViewBag.IsAuthenticated = isAuthenticated;
+            if (!isAuthenticated)
+            {
+                return View("Error");
+            }
             if (!ModelState.IsValid)
             {
                 string baseUrl2 = "https://localhost:44380/";
@@ -339,7 +351,6 @@ namespace Lib.WebUI.Controllers
                         return View("Cards/_borrowBook", model2);
                     }
                 }
-               // return View("Cards/_borrowBook", model);
             }
             string baseUrl = "https://localhost:44380/";
             using (var client = new HttpClient())
@@ -425,47 +436,5 @@ namespace Lib.WebUI.Controllers
             }
             return RedirectToAction(nameof(BookController.Index), "Book");
         }
-
-        /*public IActionResult GenerateBarCode()
-        {
-            Barcode barcode = new Barcode();
-            Image img = barcode.Encode(TYPE.CODE39, "256987", Color.Black, Color.White, 250, 100);
-            var data = ConvertImageToBytes(img);
-            
-            return File(data, "image/jpeg");
-        }
-
-        private byte[] ConvertImageToBytes(Image img)
-        {
-            using(MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, ImageFormat.Png);
-                return ms.ToArray();
-            }
-        }
-        public IActionResult BarCode()
-        {
-            var barcode = "123456789";
-            //Image barcodeImage = new Image();
-            using(Bitmap bitMap = new Bitmap(barcode.Length * 40, 80))
-            {
-                using(Graphics graphics = Graphics.FromImage(bitMap))
-                {
-                    Font ofont = new Font("IDAutomationC39M", 16);
-                    PointF point = new PointF(2f, 2f);
-                    SolidBrush blackBrush = new SolidBrush(Color.Black);
-                    SolidBrush whiteBrush = new SolidBrush(Color.White);
-                    graphics.FillRectangle(whiteBrush, 0, 0, bitMap.Width, bitMap.Height);
-                    graphics.DrawString("*" + barcode + "*", ofont, blackBrush, point);
-                }
-                using(MemoryStream ms = new MemoryStream())
-                {
-                    bitMap.Save(ms, ImageFormat.Png);
-                    var BarCodeImage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
-                    return File(ms.ToString(), "image/png");
-                }
-            }
-            //return View();
-        }*/
     }
 }
